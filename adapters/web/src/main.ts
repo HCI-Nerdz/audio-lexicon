@@ -7,7 +7,7 @@ import {
   type AuditionGraph,
   type Lexicon,
 } from "@hci-nerdz/core-ts";
-import { render, type UiState } from "./ui/render.js";
+import { paintLive, paintTree, render, type UiState } from "./ui/render.js";
 import "./styles.css";
 import versionJson from "./data/version.json";
 
@@ -171,12 +171,12 @@ app.addEventListener("input", (ev) => {
   const t = ev.target as HTMLInputElement | HTMLSelectElement;
   if (t.matches("[data-action=search]")) {
     state.query = (t as HTMLInputElement).value;
-    paint();
+    paintTree(app, state);
     return;
   }
   if (t.matches("[data-action=sample]")) {
     state.sampleId = (t as HTMLSelectElement).value;
-    paint();
+    // Keep select open/focus; no need to rebuild the whole shell.
     return;
   }
   if (t.matches("[data-param]")) {
@@ -190,9 +190,14 @@ app.addEventListener("input", (ev) => {
       state.values[id] = Number.isNaN(Number(raw)) ? raw : Number(raw);
     }
     applyEffect();
-    paint();
+    // In-place update — full paint() would destroy the range mid-drag.
+    paintLive(app, state, id);
   }
 });
 
-window.addEventListener("resize", () => paint());
+window.addEventListener("resize", () => {
+  const term = lex.terms[state.selectedId];
+  const canvas = app.querySelector<HTMLCanvasElement>("[data-viz]");
+  if (canvas && term) paintLive(app, state);
+});
 paint();

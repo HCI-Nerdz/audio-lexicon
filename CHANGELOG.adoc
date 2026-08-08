@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-08-08 — Slider drag without re-render
+
+* link:changelog-details/2026-08-08%20-%20slider-drag.adoc[Details]
+
 == 2026-08-08 — Landing page
 
 * link:changelog-details/2026-08-08%20-%20landing-page.adoc[Details]

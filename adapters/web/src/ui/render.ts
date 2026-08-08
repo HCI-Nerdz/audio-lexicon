@@ -57,12 +57,12 @@ function renderControls(term: Term, values: ParamValues): string {
           .join("")}</select><span></span></label>`;
       }
       const num = Number(v);
-      return `<label class="control"><span>${escapeHtml(p.label)}</span><input type="range" data-param="${p.id}" min="${p.min ?? 0}" max="${p.max ?? 1}" step="${p.step ?? 0.1}" value="${num}" /><span>${num}${p.unit ? " " + escapeHtml(p.unit) : ""}</span></label>`;
+      return `<label class="control"><span>${escapeHtml(p.label)}</span><input type="range" data-param="${p.id}" min="${p.min ?? 0}" max="${p.max ?? 1}" step="${p.step ?? 0.1}" value="${num}" /><span data-param-value="${escapeHtml(p.id)}">${num}${p.unit ? " " + escapeHtml(p.unit) : ""}</span></label>`;
     })
     .join("")}</div>`;
 }
 
-function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValues) {
+export function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValues) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
   const dpr = window.devicePixelRatio || 1;
@@ -231,4 +231,47 @@ export function render(root: HTMLElement, state: UiState) {
 
   const canvas = root.querySelector<HTMLCanvasElement>("[data-viz]");
   if (canvas && term) drawViz(canvas, term, state.values);
+}
+
+/** Update viz / export / value labels without replacing the DOM (keeps range drag alive). */
+export function paintLive(root: HTMLElement, state: UiState, paramId?: string) {
+  const term = state.lex.terms[state.selectedId];
+  if (!term) return;
+
+  if (paramId) {
+    const def = term.parameters.find((p) => p.id === paramId);
+    const el = root.querySelector<HTMLElement>(`[data-param-value="${CSS.escape(paramId)}"]`);
+    if (el && def) {
+      const v = state.values[paramId] ?? def.default;
+      el.textContent = `${v}${def.unit ? ` ${def.unit}` : ""}`;
+    }
+  }
+
+  const canvas = root.querySelector<HTMLCanvasElement>("[data-viz]");
+  if (canvas) drawViz(canvas, term, state.values);
+
+  const bundle = exportBundle(term, state.values);
+  const exportSection = root.querySelector(".export");
+  if (exportSection) {
+    exportSection.innerHTML = `<h2>Export</h2>${
+      bundle.conceptualOnly
+        ? `<p class="summary">Conceptual only — no EqualizerAPO / OBS map for this term.</p>`
+        : `<pre>${escapeHtml(
+            [
+              bundle.equalizerApo ? `# EqualizerAPO\n${bundle.equalizerApo}` : null,
+              bundle.obs ? `# OBS-style properties\n${JSON.stringify(bundle.obs, null, 2)}` : null,
+            ]
+              .filter(Boolean)
+              .join("\n\n"),
+          )}</pre>`
+    }`;
+  }
+}
+
+/** Rebuild only the term tree so the search field keeps focus. */
+export function paintTree(root: HTMLElement, state: UiState) {
+  const treeEl = root.querySelector(".tree");
+  if (!treeEl) return;
+  const tree = filterTree(state.lex.tree, state.query, state.lex.terms);
+  treeEl.innerHTML = renderTree(tree, state.selectedId);
 }
