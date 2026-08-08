@@ -133,7 +133,7 @@ export function render(root: HTMLElement, state: UiState) {
   root.innerHTML = `
     <aside class="sidebar">
       <div>
-        <p class="eyebrow"><a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Audio lexicon</p>
+        <p class="eyebrow"><a href="${import.meta.env.BASE_URL}">Home</a> · <a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Lexicon</p>
         <h1>audio-lexicon</h1>
       </div>
       <input class="search" type="search" placeholder="Search terms…" value="${escapeHtml(state.query)}" data-action="search" />

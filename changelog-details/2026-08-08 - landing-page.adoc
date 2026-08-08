@@ -1,0 +1,3 @@
+= Landing page
+
+Purpose homepage at `/audio-lexicon/` with animated frequency/envelope atmosphere, CTAs to the interactive lexicon (`app.html`) and the GitHub repository. Interactive UI moved to `app.html` with a Home link back to the landing.
