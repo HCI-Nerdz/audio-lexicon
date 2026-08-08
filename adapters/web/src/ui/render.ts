@@ -122,6 +122,25 @@ function renderTree(nodes: TreeNode[], selectedId: string): string {
     .join("");
 }
 
+function formatParamDisplay(
+  value: number | boolean | string,
+  unit: string | undefined,
+  step: number | undefined,
+): string {
+  let text: string;
+  if (typeof value === "number") {
+    if (step != null && step > 0 && step < 1) {
+      const places = Math.min(4, Math.max(1, Math.round(-Math.log10(step))));
+      text = value.toFixed(places);
+    } else {
+      text = String(Math.round(value));
+    }
+  } else {
+    text = String(value);
+  }
+  return unit ? `${text} ${unit}` : text;
+}
+
 function renderControls(term: Term, values: ParamValues): string {
   if (!term.parameters.length) {
     return `<p class="summary">No live parameters for this term${term.stub ? " (stub entry)" : ""}.</p>`;
@@ -141,7 +160,8 @@ function renderControls(term: Term, values: ParamValues): string {
           .join("")}</select><span></span></label>`;
       }
       const num = Number(v);
-      return `<label class="control"><span>${escapeHtml(p.label)}</span><input type="range" data-param="${p.id}" min="${p.min ?? 0}" max="${p.max ?? 1}" step="${p.step ?? 0.1}" value="${num}" /><span data-param-value="${escapeHtml(p.id)}">${num}${p.unit ? " " + escapeHtml(p.unit) : ""}</span></label>`;
+      const display = formatParamDisplay(num, p.unit, p.step);
+      return `<label class="control"><span>${escapeHtml(p.label)}</span><input type="range" data-param="${p.id}" min="${p.min ?? 0}" max="${p.max ?? 1}" step="${p.step ?? 0.1}" value="${num}" /><span class="param-value" data-param-value="${escapeHtml(p.id)}">${escapeHtml(display)}</span></label>`;
     })
     .join("")}</div>`;
 }
@@ -420,7 +440,7 @@ export function paintLive(root: HTMLElement, state: UiState, paramId?: string) {
     const el = root.querySelector<HTMLElement>(`[data-param-value="${CSS.escape(paramId)}"]`);
     if (el && def) {
       const v = state.values[paramId] ?? def.default;
-      el.textContent = `${v}${def.unit ? ` ${def.unit}` : ""}`;
+      el.textContent = formatParamDisplay(v, def.unit, def.step);
     }
   }
 

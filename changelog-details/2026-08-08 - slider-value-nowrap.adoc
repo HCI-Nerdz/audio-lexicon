@@ -1,0 +1,3 @@
+= Fix slider value wrap jump
+
+Parameter value labels (e.g. compressor dB readings) no longer wrap to a second line while dragging. Widened the value column, forced `nowrap` + tabular numerals, and formatted float displays from the parameter step.

@@ -314,15 +314,23 @@ body::before {
 
 .control {
   display: grid;
-  grid-template-columns: 7.5rem 1fr 3.5rem;
+  grid-template-columns: 7.5rem 1fr 6rem;
   gap: 0.5rem;
   align-items: center;
   font-size: 0.9rem;
 }
 
 .controls:has([data-param^="g"]) .control {
-  grid-template-columns: 4.2rem 1fr 2.8rem;
+  grid-template-columns: 4.2rem 1fr 3.25rem;
   font-size: 0.82rem;
+}
+
+.control .param-value {
+  white-space: nowrap;
+  text-align: right;
+  justify-self: end;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
 }
 
 .control input[type="range"] {

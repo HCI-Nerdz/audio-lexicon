@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-08-08 — Fix slider value wrap jump
+
+* link:changelog-details/2026-08-08%20-%20slider-value-nowrap.adoc[Details]
+
 == 2026-08-08 — Home GitHub logo button + stars shield
 
 * link:changelog-details/2026-08-08%20-%20home-github-logo-cta.adoc[Details]
