@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-08-08 — Home GitHub logo button + stars shield
+
+* link:changelog-details/2026-08-08%20-%20home-github-logo-cta.adoc[Details]
+
 == 2026-08-08 — Home CTA: Peaking EQ primary, stars badge
 
 * link:changelog-details/2026-08-08%20-%20home-cta-stars.adoc[Details]
