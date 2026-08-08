@@ -81,7 +81,9 @@ class LexiconApp : MainWindow
         root.packStart(aboutBtn, false, false, 0);
         add(root);
         showAll();
-        if ("peaking-eq" in lex["terms"].object)
+        if ("home" in lex["terms"].object)
+            selectTerm("home");
+        else if ("peaking-eq" in lex["terms"].object)
             selectTerm("peaking-eq");
     }
 
@@ -149,6 +151,17 @@ class LexiconApp : MainWindow
         auto q = query.toLower;
         foreach (cat; lex["tree"].array)
         {
+            if ("termId" in cat && cat["termId"].str.length)
+            {
+                auto termId = cat["termId"].str;
+                auto label = cat["label"].str;
+                if (q.length && !label.toLower.canFind(q) && !termId.toLower.canFind(q))
+                    continue;
+                TreeIter leaf = store.createIter();
+                store.setValue(leaf, 0, label);
+                store.setValue(leaf, 1, termId);
+                continue;
+            }
             TreeIter catIter = store.createIter();
             store.setValue(catIter, 0, cat["label"].str);
             store.setValue(catIter, 1, "");

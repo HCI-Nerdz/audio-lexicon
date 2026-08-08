@@ -66,6 +66,7 @@ LexiconDock::LexiconDock(QWidget *parent) : QDockWidget(parent) {
 
   loadCatalog();
   rebuildTree(QString());
+  if (terms_.contains(QStringLiteral("home"))) selectTerm(QStringLiteral("home"));
 }
 
 void LexiconDock::loadCatalog() {
@@ -80,6 +81,14 @@ void LexiconDock::rebuildTree(const QString &query) {
   const auto q = query.trimmed().toLower();
   for (const auto &catVal : lexicon_.value(QStringLiteral("tree")).toArray()) {
     const auto cat = catVal.toObject();
+    const auto rootTermId = cat.value(QStringLiteral("termId")).toString();
+    if (!rootTermId.isEmpty()) {
+      const auto label = cat.value(QStringLiteral("label")).toString();
+      if (!q.isEmpty() && !label.toLower().contains(q) && !rootTermId.toLower().contains(q)) continue;
+      auto *item = new QTreeWidgetItem(tree_, QStringList{label});
+      item->setData(0, Qt::UserRole, rootTermId);
+      continue;
+    }
     auto *parent = new QTreeWidgetItem(tree_, QStringList{cat.value(QStringLiteral("label")).toString()});
     for (const auto &childVal : cat.value(QStringLiteral("children")).toArray()) {
       const auto child = childVal.toObject();

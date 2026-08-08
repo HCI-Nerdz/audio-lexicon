@@ -1,5 +1,5 @@
 import type { Lexicon, ParamValues, Term, TreeNode } from "@hci-nerdz/core-ts";
-import { exportBundle, filterTree, responseForAudition } from "@hci-nerdz/core-ts";
+import { exportBundle, filterTree, isHomeTerm, responseForAudition } from "@hci-nerdz/core-ts";
 import versionJson from "../data/version.json";
 
 const version = versionJson as { version: string; channel: string; name?: string };
@@ -30,7 +30,8 @@ function renderTree(nodes: TreeNode[], selectedId: string): string {
     .map((n) => {
       if (n.termId) {
         const active = n.termId === selectedId ? " active" : "";
-        return `<button type="button" class="term${active}" data-term="${escapeHtml(n.termId)}">${escapeHtml(n.label)}</button>`;
+        const homeClass = n.termId === "home" ? " term-home" : "";
+        return `<button type="button" class="term${homeClass}${active}" data-term="${escapeHtml(n.termId)}">${escapeHtml(n.label)}</button>`;
       }
       const kids = n.children ? renderTree(n.children, selectedId) : "";
       return `<details open><summary>${escapeHtml(n.label)}</summary>${kids}</details>`;
@@ -96,9 +97,16 @@ export function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValu
       const depth = Number(values.depth ?? values.ratio ?? 4) / 20;
       let y = 0.55;
       if (term.audition === "tremolo") {
-        y = 0.5 + Math.sin(t * Math.PI * 8 * (Number(values.rate ?? 4) / 4)) * 0.25 * (Number(values.depth ?? 50) / 100);
+        y =
+          0.5 +
+          Math.sin(t * Math.PI * 8 * (Number(values.rate ?? 4) / 4)) *
+            0.25 *
+            (Number(values.depth ?? 50) / 100);
       } else {
-        const env = t < attack ? t / Math.max(0.01, attack) : 1 - Math.min(1, (t - 0.55) / Math.max(0.05, release));
+        const env =
+          t < attack
+            ? t / Math.max(0.01, attack)
+            : 1 - Math.min(1, (t - 0.55) / Math.max(0.05, release));
         y = 0.75 - Math.max(0, env) * (0.35 + depth * 0.2);
       }
       const py = y * h;
@@ -124,25 +132,35 @@ export function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValu
   ctx.stroke();
 }
 
-export function render(root: HTMLElement, state: UiState) {
-  const term = state.lex.terms[state.selectedId];
-  const tree = filterTree(state.lex.tree, state.query, state.lex.terms);
-  const bundle = term ? exportBundle(term, state.values) : null;
-  const samples = state.lex.samples;
+function renderHomePage(term: Term): string {
+  return `
+    <p class="eyebrow">HCI Nerdz · Audio literacy</p>
+    <h2 class="hero-name">${escapeHtml(term.name)}</h2>
+    <p class="summary">${escapeHtml(term.summary)}</p>
 
-  root.innerHTML = `
-    <aside class="sidebar">
-      <div>
-        <p class="eyebrow"><a href="${import.meta.env.BASE_URL}">Home</a> · <a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Lexicon</p>
-        <h1>audio-lexicon</h1>
-      </div>
-      <input class="search" type="search" placeholder="Search terms…" value="${escapeHtml(state.query)}" data-action="search" />
-      <div class="tree">${renderTree(tree, state.selectedId)}</div>
-    </aside>
-    <main class="main">
-      ${
-        term
-          ? `
+    <div class="section home-cta">
+      <a class="land-btn primary" href="https://github.com/HCI-Nerdz/audio-lexicon" target="_blank" rel="noreferrer">GitHub project</a>
+      <button type="button" class="land-btn" data-term="peaking-eq">Start with Peaking EQ</button>
+    </div>
+
+    <div class="section"><h2>Why it exists</h2><p>${escapeHtml(term.plainMeaning)}</p></div>
+    <div class="section"><h2>What this project is</h2><p>${escapeHtml(term.history)}</p></div>
+    <div class="section"><h2>How to use it</h2><p>${escapeHtml(term.whenToUse)}</p></div>
+    <div class="section"><h2>What it is not</h2><p>${escapeHtml(term.commonConfusion)}</p></div>
+
+    <div class="section"><h2>Atmosphere</h2>
+      <div class="viz-wrap home-viz"><canvas data-viz></canvas></div>
+    </div>
+  `;
+}
+
+function renderTermPage(
+  term: Term,
+  state: UiState,
+  bundle: ReturnType<typeof exportBundle>,
+  samples: Lexicon["samples"],
+): string {
+  return `
         <p class="eyebrow">${escapeHtml(term.category)}${term.stub ? '<span class="stub-flag">stub</span>' : ""}</p>
         <h2 class="hero-name">${escapeHtml(term.name)}</h2>
         <p class="summary">${escapeHtml(term.summary)}</p>
@@ -225,19 +243,43 @@ export function render(root: HTMLElement, state: UiState) {
 
         <div class="section export"><h2>Export</h2>
           ${
-            bundle?.conceptualOnly
+            bundle.conceptualOnly
               ? `<p class="summary">Conceptual only — no EqualizerAPO / OBS map for this term.</p>`
               : `<pre>${escapeHtml(
                   [
-                    bundle?.equalizerApo ? `# EqualizerAPO\n${bundle.equalizerApo}` : null,
-                    bundle?.obs ? `# OBS-style properties\n${JSON.stringify(bundle.obs, null, 2)}` : null,
+                    bundle.equalizerApo ? `# EqualizerAPO\n${bundle.equalizerApo}` : null,
+                    bundle.obs ? `# OBS-style properties\n${JSON.stringify(bundle.obs, null, 2)}` : null,
                   ]
                     .filter(Boolean)
                     .join("\n\n"),
                 )}</pre>`
           }
         </div>
-      `
+  `;
+}
+
+export function render(root: HTMLElement, state: UiState) {
+  const term = state.lex.terms[state.selectedId];
+  const tree = filterTree(state.lex.tree, state.query, state.lex.terms);
+  const bundle = term ? exportBundle(term, state.values) : null;
+  const samples = state.lex.samples;
+  const home = isHomeTerm(term);
+
+  root.innerHTML = `
+    <aside class="sidebar">
+      <div>
+        <p class="eyebrow"><a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Lexicon</p>
+        <h1>audio-lexicon</h1>
+      </div>
+      <input class="search" type="search" placeholder="Search terms…" value="${escapeHtml(state.query)}" data-action="search" />
+      <div class="tree">${renderTree(tree, state.selectedId)}</div>
+    </aside>
+    <main class="main ${home ? "main-home" : ""}">
+      ${
+        term
+          ? home
+            ? renderHomePage(term)
+            : renderTermPage(term, state, bundle!, samples)
           : `<p>Select a term.</p>`
       }
       <p class="about-line">Part of HCI Nerdz · MIT · Samples keep their own licenses.</p>
@@ -251,7 +293,7 @@ export function render(root: HTMLElement, state: UiState) {
 /** Update viz / export / value labels without replacing the DOM (keeps range drag alive). */
 export function paintLive(root: HTMLElement, state: UiState, paramId?: string) {
   const term = state.lex.terms[state.selectedId];
-  if (!term) return;
+  if (!term || isHomeTerm(term)) return;
 
   if (paramId) {
     const def = term.parameters.find((p) => p.id === paramId);

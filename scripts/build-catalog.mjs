@@ -56,6 +56,27 @@ function add(t) {
   terms[t.id] = t;
 }
 
+add(term({
+  id: "home",
+  name: "audio-lexicon",
+  aliases: ["home", "about", "start"],
+  category: "home",
+  summary:
+    "Pro apps bury filters behind jargon. This UI teaches what each setting means — history, sound, and controls — before you trust a knob.",
+  plainMeaning:
+    "Equalizers, ducking, sidechain, Q, shelves — the words arrived from radio, consoles, and speakers. Most UIs assume you already speak that dialect. audio-lexicon puts a searchable term tree beside plain-language meaning, original usage, a live curve or envelope, and A/B audition on royalty-free audio.",
+  history:
+    "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; honesty when it does not.",
+  whenToUse:
+    "Pick any term in the tree. Read meaning and history, twist controls, Play a curated sample, toggle Effect engaged/bypassed, and copy export snippets when shown. Start from Home anytime to reorient.",
+  commonConfusion:
+    "This is not a DAW, VST host, or system-wide APO installer — and commercial hits (Skrillex, M.I.A. Paper Planes, etc.) are not bundled. Use the curated CC0/public-domain samples for realistic A/B.",
+  viz: "freq-response",
+  parameters: [],
+  audition: "none",
+  exports: {},
+}));
+
 // —— EQ / filters (rich) ——
 add(term({
   id: "peaking-eq",
@@ -797,6 +818,7 @@ for (const [id, name, summary, _kind, obs] of broadcast) {
 }
 
 const tree = [
+  { id: "node-home", label: "Home", termId: "home" },
   {
     id: "eq-filters",
     label: "EQ & filters",

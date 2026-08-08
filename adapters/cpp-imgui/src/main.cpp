@@ -10,6 +10,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
+#include <algorithm>
 
 static std::string readFile(const std::string &path) {
   std::ifstream in(path, std::ios::binary);
@@ -87,6 +88,11 @@ int main() {
 
   const auto raw = readFile(catalogPath());
   auto terms = parseTermsRough(raw);
+  std::sort(terms.begin(), terms.end(), [](const TermView &a, const TermView &b) {
+    if (a.id == "home") return true;
+    if (b.id == "home") return false;
+    return a.name < b.name;
+  });
   int selected = 0;
   char filterBuf[128] = {};
   bool showAbout = false;
@@ -112,21 +118,24 @@ int main() {
     ImGui::BeginChild("detail", ImVec2(0, 0), false);
     if (!terms.empty()) {
       const auto &t = terms[selected];
+      const bool home = t.id == "home";
       ImGui::TextWrapped("%s", t.name.c_str());
       ImGui::Separator();
       ImGui::TextWrapped("Summary: %s", t.summary.c_str());
       ImGui::Spacing();
-      ImGui::TextWrapped("Meaning: %s", t.meaning.c_str());
+      ImGui::TextWrapped("%s: %s", home ? "Why" : "Meaning", t.meaning.c_str());
       ImGui::Spacing();
-      ImGui::TextWrapped("History: %s", t.history.c_str());
+      ImGui::TextWrapped("%s: %s", home ? "Project" : "History", t.history.c_str());
       ImGui::Spacing();
-      ImGui::TextWrapped("When: %s", t.when.c_str());
+      ImGui::TextWrapped("%s: %s", home ? "How" : "When", t.when.c_str());
       ImGui::Spacing();
-      ImGui::TextWrapped("Confusion: %s", t.confusion.c_str());
-      ImGui::Separator();
-      ImGui::TextUnformatted("Export");
-      if (t.apo.empty()) ImGui::TextUnformatted("Conceptual only");
-      else ImGui::TextWrapped("%s", t.apo.c_str());
+      ImGui::TextWrapped("%s: %s", home ? "Not" : "Confusion", t.confusion.c_str());
+      if (!home) {
+        ImGui::Separator();
+        ImGui::TextUnformatted("Export");
+        if (t.apo.empty()) ImGui::TextUnformatted("Conceptual only");
+        else ImGui::TextWrapped("%s", t.apo.c_str());
+      }
     }
     if (ImGui::Button("About")) showAbout = true;
     ImGui::EndChild();

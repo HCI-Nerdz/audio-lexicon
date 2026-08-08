@@ -7,9 +7,7 @@ ifndef::env-github[:icons: font]
 
 Pro-audio filter and processing literacy UI — shared catalog with multi-toolkit adapters.
 
-link:https://hci-nerdz.github.io/audio-lexicon/[Landing]
-·
-link:https://hci-nerdz.github.io/audio-lexicon/app.html[Open the lexicon]
+link:https://hci-nerdz.github.io/audio-lexicon/[Open the lexicon]
 ·
 link:https://github.com/HCI-Nerdz/audio-lexicon/issues[Report Bug]
 

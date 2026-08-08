@@ -1,0 +1,3 @@
+= Home page inside the lexicon tree
+
+Purpose / homepage is now a first-class catalog entry (`home`) pinned at the top of the filter tree in every adapter. Web opens on Home; `app.html` redirects to the main lexicon. Native shells (GtkD, Qt, ImGui, iced, egui, OBS) also default to Home and render root-level tree leaves.

@@ -22,6 +22,7 @@ struct TreeNode {
 
 #[derive(Debug, Clone, Deserialize)]
 struct Term {
+    id: Option<String>,
     name: String,
     summary: String,
     #[serde(rename = "plainMeaning")]
@@ -61,7 +62,9 @@ impl App {
         cc.egui_ctx.set_style(style);
         let raw = fs::read_to_string(catalog_path()).expect("catalog");
         let lexicon: Lexicon = serde_json::from_str(&raw).expect("parse");
-        let selected = if lexicon.terms.contains_key("peaking-eq") {
+        let selected = if lexicon.terms.contains_key("home") {
+            "home".into()
+        } else if lexicon.terms.contains_key("peaking-eq") {
             "peaking-eq".into()
         } else {
             lexicon.terms.keys().next().cloned().unwrap_or_default()
@@ -83,6 +86,21 @@ impl eframe::App for App {
             egui::ScrollArea::vertical().show(ui, |ui| {
                 let q = self.query.to_lowercase();
                 for cat in &self.lexicon.tree {
+                    if let Some(id) = &cat.term_id {
+                        if q.is_empty()
+                            || cat.label.to_lowercase().contains(&q)
+                            || id.to_lowercase().contains(&q)
+                        {
+                            if ui
+                                .selectable_label(self.selected == *id, format!("★ {}", cat.label))
+                                .clicked()
+                            {
+                                self.selected = id.clone();
+                            }
+                        }
+                        ui.add_space(6.0);
+                        continue;
+                    }
                     ui.strong(&cat.label);
                     if let Some(children) = &cat.children {
                         for child in children {
@@ -110,27 +128,33 @@ impl eframe::App for App {
         egui::CentralPanel::default().show(ctx, |ui| {
             egui::ScrollArea::vertical().show(ui, |ui| {
                 if let Some(t) = self.lexicon.terms.get(&self.selected) {
+                    let is_home = t.id.as_deref() == Some("home") || self.selected == "home";
                     ui.heading(&t.name);
                     ui.label(&t.summary);
                     ui.add_space(8.0);
-                    ui.label(format!("Meaning: {}", t.plain_meaning));
-                    ui.label(format!("History: {}", t.history));
-                    ui.label(format!("When: {}", t.when_to_use));
-                    ui.label(format!("Confusion: {}", t.common_confusion));
+                    ui.label(format!("{}: {}", if is_home { "Why" } else { "Meaning" }, t.plain_meaning));
+                    ui.label(format!("{}: {}", if is_home { "Project" } else { "History" }, t.history));
+                    ui.label(format!("{}: {}", if is_home { "How" } else { "When" }, t.when_to_use));
+                    ui.label(format!("{}: {}", if is_home { "Not" } else { "Confusion" }, t.common_confusion));
                     ui.separator();
-                    ui.heading("Export");
-                    match (&t.exports.equalizer_apo, &t.exports.obs) {
-                        (None, None) => ui.label("Conceptual only — no EqualizerAPO / OBS map."),
-                        (apo, obs) => {
-                            if let Some(a) = apo {
-                                ui.monospace(a);
+                    if is_home {
+                        ui.heading("Links");
+                        ui.hyperlink("https://github.com/HCI-Nerdz/audio-lexicon");
+                    } else {
+                        ui.heading("Export");
+                        match (&t.exports.equalizer_apo, &t.exports.obs) {
+                            (None, None) => ui.label("Conceptual only — no EqualizerAPO / OBS map."),
+                            (apo, obs) => {
+                                if let Some(a) = apo {
+                                    ui.monospace(a);
+                                }
+                                if let Some(o) = obs {
+                                    ui.monospace(serde_json::to_string_pretty(o).unwrap_or_default());
+                                }
+                                ui.label("")
                             }
-                            if let Some(o) = obs {
-                                ui.monospace(serde_json::to_string_pretty(o).unwrap_or_default());
-                            }
-                            ui.label("")
-                        }
-                    };
+                        };
+                    }
                     ui.separator();
                     ui.small(format!(
                         "About: audio-lexicon-egui {} · catalog {}",

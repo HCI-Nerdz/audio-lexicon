@@ -1,4 +1,5 @@
 export * from "./graphic-eq.js";
+export * from "./home.js";
 export type * from "./types.js";
 export * from "./catalog.js";
 export * from "./export.js";

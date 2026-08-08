@@ -123,10 +123,57 @@ body::before {
   color: var(--ink);
 }
 
-.tree button.term:hover,
-.tree button.term.active {
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
+.tree button.term.term-home {
+  font-weight: 700;
   color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.home-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.land-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  text-decoration: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.land-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.land-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #f4fbf8;
+}
+
+.land-btn.primary:hover {
+  background: #0c5a4d;
+}
+
+.main-home .hero-name {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+}
+
+.main-home .home-viz {
+  height: 200px;
 }
 
 .main {

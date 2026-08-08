@@ -71,7 +71,9 @@ fn load() -> Lexicon {
 impl App {
     fn new() -> (Self, Task<Message>) {
         let lexicon = load();
-        let selected = if lexicon.terms.contains_key("peaking-eq") {
+        let selected = if lexicon.terms.contains_key("home") {
+            "home".into()
+        } else if lexicon.terms.contains_key("peaking-eq") {
             "peaking-eq".into()
         } else {
             lexicon.terms.keys().next().cloned().unwrap_or_default()
@@ -102,6 +104,19 @@ impl App {
         let mut tree_col = Column::new().spacing(4);
         let q = self.query.to_lowercase();
         for cat in &self.lexicon.tree {
+            if let Some(id) = &cat.term_id {
+                if q.is_empty()
+                    || cat.label.to_lowercase().contains(&q)
+                    || id.to_lowercase().contains(&q)
+                {
+                    tree_col = tree_col.push(
+                        button(text(format!("★ {}", cat.label)).size(14))
+                            .on_press(Message::Select(id.clone()))
+                            .width(Length::Fill),
+                    );
+                }
+                continue;
+            }
             tree_col = tree_col.push(text(&cat.label).size(14));
             if let Some(children) = &cat.children {
                 for child in children {
@@ -124,25 +139,30 @@ impl App {
 
         let term = self.lexicon.terms.get(&self.selected);
         let detail: Element<'_, Message> = if let Some(t) = term {
-            let export = match (&t.exports.equalizer_apo, &t.exports.obs) {
-                (None, None) => "Conceptual only — no EqualizerAPO / OBS map.".to_string(),
-                (apo, obs) => format!(
-                    "{}\n{}",
-                    apo.as_deref().unwrap_or(""),
-                    obs.as_ref()
-                        .map(|v| serde_json::to_string_pretty(v).unwrap_or_default())
-                        .unwrap_or_default()
-                ),
+            let is_home = t.id == "home";
+            let export = if is_home {
+                "Project: https://github.com/HCI-Nerdz/audio-lexicon".to_string()
+            } else {
+                match (&t.exports.equalizer_apo, &t.exports.obs) {
+                    (None, None) => "Conceptual only — no EqualizerAPO / OBS map.".to_string(),
+                    (apo, obs) => format!(
+                        "{}\n{}",
+                        apo.as_deref().unwrap_or(""),
+                        obs.as_ref()
+                            .map(|v| serde_json::to_string_pretty(v).unwrap_or_default())
+                            .unwrap_or_default()
+                    ),
+                }
             };
             column![
                 text(format!("HCI Nerdz · Audio lexicon (iced) · catalog {}", self.lexicon.version)).size(12),
                 text(&t.name).size(32),
                 text(&t.summary).size(16),
-                text(format!("Meaning: {}", t.plain_meaning)),
-                text(format!("History: {}", t.history)),
-                text(format!("When: {}", t.when_to_use)),
-                text(format!("Confusion: {}", t.common_confusion)),
-                text("Export").size(18),
+                text(if is_home { format!("Why: {}", t.plain_meaning) } else { format!("Meaning: {}", t.plain_meaning) }),
+                text(if is_home { format!("Project: {}", t.history) } else { format!("History: {}", t.history) }),
+                text(if is_home { format!("How: {}", t.when_to_use) } else { format!("When: {}", t.when_to_use) }),
+                text(if is_home { format!("Not: {}", t.common_confusion) } else { format!("Confusion: {}", t.common_confusion) }),
+                text(if is_home { "Links" } else { "Export" }).size(18),
                 text(export),
                 text(format!("About: audio-lexicon-iced {}", env!("CARGO_PKG_VERSION"))).size(12),
             ]

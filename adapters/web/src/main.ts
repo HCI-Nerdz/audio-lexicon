@@ -3,6 +3,7 @@ import {
   createAuditionGraph,
   decodeAudioUrl,
   defaultParams,
+  defaultSelectedTermId,
   parseLexicon,
   type AuditionGraph,
   type Lexicon,
@@ -14,8 +15,7 @@ import versionJson from "./data/version.json";
 const version = versionJson as { version: string; channel: string; name?: string };
 
 const lex: Lexicon = parseLexicon(lexiconJson);
-const firstTerm =
-  Object.values(lex.terms).find((t) => t.id === "peaking-eq")?.id ?? Object.keys(lex.terms)[0];
+const firstTerm = defaultSelectedTermId(Object.keys(lex.terms));
 
 const state: UiState = {
   lex,
