@@ -289,26 +289,63 @@ add(term({
   aliases: ["LR4", "LR crossover"],
   category: "eq-filters",
   summary: "Crossover filter alignment that sums flat on-axis.",
-  plainMeaning: "Two cascaded Butterworth sections; popular in multi-way speakers so lows+highs add correctly.",
+  plainMeaning: "Even-order Linkwitz-Riley is cascaded Butterworth sections (LR4 = two 2nd-order Butter stages). Lows and highs sum flat when each side uses the matching high/low pair.",
   history: "Siegfried Linkwitz and Russ Riley; widely taught in DIY speaker and PA system design.",
   whenToUse: "Designing or understanding speaker/PA crossovers.",
   commonConfusion: "Not every DAW ‘crossover’ is true LR alignment.",
   viz: "freq-response",
-  stub: true,
+  parameters: [
+    { id: "freq", label: "Crossover", kind: "float", unit: "Hz", min: 20, max: 20000, step: 1, default: 1000 },
+    {
+      id: "order",
+      label: "Order",
+      kind: "enum",
+      default: 4,
+      options: [
+        { value: 2, label: "LR2 (12 dB/oct)" },
+        { value: 4, label: "LR4 (24 dB/oct)" },
+        { value: 8, label: "LR8 (48 dB/oct)" },
+      ],
+    },
+    {
+      id: "side",
+      label: "Side",
+      kind: "enum",
+      default: "low",
+      options: [
+        { value: "low", label: "Low-pass half" },
+        { value: "high", label: "High-pass half" },
+      ],
+    },
+  ],
+  audition: "linkwitz-riley",
 }));
 
+const graphicBands = [31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 16000];
 add(term({
   id: "graphic-eq",
   name: "Graphic EQ",
   category: "eq-filters",
   summary: "Bank of fixed-frequency boost/cut sliders.",
-  plainMeaning: "You see a ‘graphic’ of the curve as slider positions. Fast for live tuning; less precise than full parametric.",
+  plainMeaning: "You see a ‘graphic’ of the curve as slider positions. Fast for live tuning; less precise than full parametric. This demo is a 10-band octave graphic.",
   history: "Live sound and consumer hi-fi popularized octave and 1/3-octave graphic equalizers.",
   whenToUse: "Room tuning, feedback hunting, broad tonal shape.",
   commonConfusion: "Graphic ≠ parametric; centers are fixed.",
   viz: "freq-response",
-  exports: { equalizerApo: "GraphicEQ: 25 0; 40 0; 63 0; 100 0; 160 0; 250 0; 400 0; 630 0; 1000 0; 1600 0; 2500 0; 4000 0; 6300 0; 10000 0; 16000 0" },
-  stub: true,
+  parameters: graphicBands.map((hz) => ({
+    id: `g${hz}`,
+    label: hz >= 1000 ? `${hz / 1000} kHz` : `${hz} Hz`,
+    kind: "float",
+    unit: "dB",
+    min: -12,
+    max: 12,
+    step: 0.5,
+    default: 0,
+  })),
+  audition: "graphic-eq",
+  exports: {
+    equalizerApo: `GraphicEQ: ${graphicBands.map((hz) => `${hz} {g${hz}}`).join("; ")}`,
+  },
 }));
 
 add(term({
@@ -316,12 +353,27 @@ add(term({
   name: "Linear-phase vs minimum-phase",
   category: "eq-filters",
   summary: "Two ways EQ can treat phase while changing frequency balance.",
-  plainMeaning: "Minimum-phase (typical analog-style) shifts phase as it EQ’s. Linear-phase keeps phase relationships but can introduce pre-ringing and latency.",
+  plainMeaning: "Minimum-phase (typical analog-style) shifts phase as it EQ’s. Linear-phase keeps phase relationships but can introduce pre-ringing and latency. This browser audition uses Web Audio biquads — minimum-phase only — so you can still feel the magnitude EQ while reading the phase trade-off.",
   history: "Digital EQ made linear-phase practical; analog desks were inherently minimum-phase.",
   whenToUse: "Mastering surgical cuts sometimes use linear-phase; tracking often prefers minimum-phase.",
   commonConfusion: "Linear-phase is not ‘higher quality’ by default—trade latency and pre-echo.",
-  viz: "conceptual",
-  stub: true,
+  viz: "freq-response",
+  parameters: [
+    { id: "freq", label: "Frequency", kind: "float", unit: "Hz", min: 20, max: 20000, step: 1, default: 2500 },
+    { id: "gain", label: "Gain", kind: "float", unit: "dB", min: -24, max: 24, step: 0.1, default: 6 },
+    { id: "q", label: "Q", kind: "float", unit: "", min: 0.1, max: 20, step: 0.1, default: 2 },
+    {
+      id: "phaseMode",
+      label: "Phase mode",
+      kind: "enum",
+      default: "minimum",
+      options: [
+        { value: "minimum", label: "Minimum-phase (auditioned)" },
+        { value: "linear", label: "Linear-phase (magnitude only here)" },
+      ],
+    },
+  ],
+  audition: "biquad-peaking",
 }));
 
 add(term({

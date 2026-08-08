@@ -35,6 +35,8 @@ export type AuditionKind =
   | "biquad-notch"
   | "biquad-bandpass"
   | "biquad-allpass"
+  | "graphic-eq"
+  | "linkwitz-riley"
   | "gain"
   | "delay"
   | "compressor"

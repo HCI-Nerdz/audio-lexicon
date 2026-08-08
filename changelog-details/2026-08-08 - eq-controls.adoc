@@ -1,0 +1,3 @@
+= Interactive graphic EQ and Linkwitz-Riley
+
+Lifted EQ stubs that were easy to wire: 10-band graphic EQ (sliders + cascaded peaking audition + EqualizerAPO GraphicEQ export), Linkwitz-Riley crossover half (order/side/cutoff with cascaded Butterworth biquads), and linear-vs-minimum-phase magnitude controls (Web Audio remains minimum-phase; copy says so).

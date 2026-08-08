@@ -1,4 +1,5 @@
 import type { AuditionKind, ParamValues } from "./types.js";
+import { GRAPHIC_EQ_BANDS, GRAPHIC_EQ_Q } from "./graphic-eq.js";
 
 export interface AuditionGraph {
   ctx: AudioContext;
@@ -174,13 +175,50 @@ export function createAuditionGraph(ctx: AudioContext): AuditionGraph {
           break;
         }
         case "gate": {
-          // Soft gate approximation via expander-ish compressor curve + makeup
           const comp = ctx.createDynamicsCompressor();
           comp.threshold.value = Number(values.threshold ?? -40);
           comp.ratio.value = 12;
           comp.attack.value = Number(values.attack ?? 1) / 1000;
           comp.release.value = Number(values.release ?? 200) / 1000;
           connectEffect(comp);
+          break;
+        }
+        case "graphic-eq": {
+          let prev: AudioNode = input;
+          const filters: BiquadFilterNode[] = [];
+          for (const hz of GRAPHIC_EQ_BANDS) {
+            const gain = Number(values[`g${hz}`] ?? 0);
+            const biquad = ctx.createBiquadFilter();
+            biquad.type = "peaking";
+            biquad.frequency.value = hz;
+            biquad.Q.value = GRAPHIC_EQ_Q;
+            biquad.gain.value = gain;
+            prev.connect(biquad);
+            prev = biquad;
+            filters.push(biquad);
+          }
+          prev.connect(wet);
+          effectNodes.push(...filters);
+          break;
+        }
+        case "linkwitz-riley": {
+          const order = Number(values.order ?? 4);
+          const stages = Math.max(1, Math.round(order / 2));
+          const side = String(values.side ?? "low");
+          const type: BiquadFilterType = side === "high" ? "highpass" : "lowpass";
+          let prev: AudioNode = input;
+          const filters: BiquadFilterNode[] = [];
+          for (let i = 0; i < stages; i++) {
+            const biquad = ctx.createBiquadFilter();
+            biquad.type = type;
+            biquad.frequency.value = freq;
+            biquad.Q.value = Math.SQRT1_2; // Butterworth Q for cascaded LR stages
+            prev.connect(biquad);
+            prev = biquad;
+            filters.push(biquad);
+          }
+          prev.connect(wet);
+          effectNodes.push(...filters);
           break;
         }
         case "none":
