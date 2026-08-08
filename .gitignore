@@ -41,4 +41,6 @@ samples/cache/**
 samples/curated/*.mp3
 !samples/curated/tone-bed.wav
 !samples/curated/music-manifest.json
+adapters/web/public/samples/*.mp3
+!adapters/web/public/samples/tone-bed.wav
 scripts/_probe-samples.mjs
