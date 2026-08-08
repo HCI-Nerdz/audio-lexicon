@@ -240,9 +240,160 @@ body::before {
   color: #fff;
 }
 
-.transport button.active {
-  outline: 2px solid var(--accent-2);
-  outline-offset: 1px;
+.fx-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.45rem !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, #fff 78%, var(--paper-deep)) !important;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.fx-toggle.is-on {
+  border-color: color-mix(in srgb, #1a9a4a 55%, var(--line)) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #1a9a4a 25%, transparent);
+}
+
+.fx-toggle.is-off {
+  border-color: color-mix(in srgb, #c62828 50%, var(--line)) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #c62828 20%, transparent);
+}
+
+.fx-lamp {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.fx-toggle.is-on .fx-lamp {
+  background: radial-gradient(circle at 35% 30%, #b6ffce 0%, #22c55e 45%, #15803d 100%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, #22c55e 35%, transparent),
+    0 0 10px 2px color-mix(in srgb, #22c55e 55%, transparent);
+  animation: fx-pulse-green 1.8s ease-in-out infinite;
+}
+
+.fx-toggle.is-off .fx-lamp {
+  background: radial-gradient(circle at 35% 30%, #ffb4b4 0%, #ef4444 45%, #b91c1c 100%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, #ef4444 30%, transparent),
+    0 0 8px 1px color-mix(in srgb, #ef4444 45%, transparent);
+  animation: fx-pulse-red 1.8s ease-in-out infinite;
+}
+
+.fx-switch {
+  position: relative;
+  width: 2.35rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: #c5d0c8;
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+
+.fx-toggle.is-on .fx-switch {
+  background: color-mix(in srgb, #22c55e 55%, #9cb8a8);
+}
+
+.fx-toggle.is-off .fx-switch {
+  background: color-mix(in srgb, #ef4444 45%, #b0a8a8);
+}
+
+.fx-thumb {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-toggle.is-on .fx-thumb {
+  transform: translateX(1.05rem);
+}
+
+.fx-toggle.is-off .fx-thumb {
+  transform: translateX(0);
+}
+
+.fx-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+  min-width: 4.2rem;
+}
+
+.fx-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.fx-state {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fx-toggle.is-on .fx-state {
+  color: #15803d;
+}
+
+.fx-toggle.is-off .fx-state {
+  color: #b91c1c;
+}
+
+@keyframes fx-pulse-green {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #22c55e 35%, transparent),
+      0 0 8px 1px color-mix(in srgb, #22c55e 40%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #22c55e 45%, transparent),
+      0 0 14px 3px color-mix(in srgb, #22c55e 65%, transparent);
+  }
+}
+
+@keyframes fx-pulse-red {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #ef4444 28%, transparent),
+      0 0 6px 1px color-mix(in srgb, #ef4444 35%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #ef4444 40%, transparent),
+      0 0 12px 2px color-mix(in srgb, #ef4444 55%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-toggle.is-on .fx-lamp,
+  .fx-toggle.is-off .fx-lamp {
+    animation: none;
+  }
+  .fx-thumb {
+    transition: none;
+  }
 }
 
 .export pre {

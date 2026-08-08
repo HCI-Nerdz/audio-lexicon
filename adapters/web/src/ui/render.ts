@@ -160,7 +160,22 @@ export function render(root: HTMLElement, state: UiState) {
 
         <div class="transport">
           <button type="button" class="primary" data-action="play">${state.playing ? "Stop" : "Play"}</button>
-          <button type="button" class="${state.bypass ? "active" : ""}" data-action="bypass">${state.bypass ? "Bypassed (A)" : "Effect (B)"}</button>
+          <button
+            type="button"
+            class="fx-toggle ${state.bypass ? "is-off" : "is-on"}"
+            data-action="bypass"
+            role="switch"
+            aria-checked="${state.bypass ? "false" : "true"}"
+            aria-label="${state.bypass ? "Effect bypassed" : "Effect engaged"}"
+            title="${state.bypass ? "Bypassed (A) — click to engage effect" : "Effect on (B) — click to bypass"}"
+          >
+            <span class="fx-lamp" aria-hidden="true"></span>
+            <span class="fx-switch" aria-hidden="true"><span class="fx-thumb"></span></span>
+            <span class="fx-copy">
+              <span class="fx-title">Effect</span>
+              <span class="fx-state">${state.bypass ? "Bypassed" : "Engaged"}</span>
+            </span>
+          </button>
           <label>Sample
             <select data-action="sample">
               ${samples

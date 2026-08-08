@@ -1,0 +1,3 @@
+= Effect A/B toggle lamp
+
+Replaced the plain Effect/Bypass text button with an animated switch: green lamp + Engaged when the effect is in circuit, red lamp + Bypassed when dry. Respects `prefers-reduced-motion`.
