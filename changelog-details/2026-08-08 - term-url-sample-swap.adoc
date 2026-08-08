@@ -1,0 +1,3 @@
+= Term URL routing + live sample swap
+
+Selected lexicon term is reflected in `?term=` (History API) so refresh and back/forward keep the current tool. Sample dropdown changes now hot-swap the audition buffer while playing instead of only updating UI state.

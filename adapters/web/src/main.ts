@@ -15,13 +15,36 @@ import versionJson from "./data/version.json";
 const version = versionJson as { version: string; channel: string; name?: string };
 
 const lex: Lexicon = parseLexicon(lexiconJson);
-const firstTerm = defaultSelectedTermId(Object.keys(lex.terms));
+const fallbackTerm = defaultSelectedTermId(Object.keys(lex.terms));
+
+function termFromLocation(): string {
+  const params = new URLSearchParams(location.search);
+  const fromQuery = params.get("term");
+  if (fromQuery && lex.terms[fromQuery]) return fromQuery;
+  const hash = location.hash.replace(/^#\/?/, "");
+  if (hash && lex.terms[hash]) return hash;
+  return fallbackTerm;
+}
+
+function syncUrl(termId: string, mode: "push" | "replace" = "push") {
+  const url = new URL(location.href);
+  if (lex.terms[termId]) url.searchParams.set("term", termId);
+  else url.searchParams.delete("term");
+  url.hash = "";
+  const next = `${url.pathname}${url.search}${url.hash}`;
+  const cur = `${location.pathname}${location.search}${location.hash}`;
+  if (next === cur) return;
+  if (mode === "replace") history.replaceState({ termId }, "", next);
+  else history.pushState({ termId }, "", next);
+}
+
+const initialTerm = termFromLocation();
 
 const state: UiState = {
   lex,
   query: "",
-  selectedId: firstTerm,
-  values: defaultParams(lex.terms[firstTerm]),
+  selectedId: initialTerm,
+  values: defaultParams(lex.terms[initialTerm]),
   playing: false,
   bypass: false,
   sampleId: lex.samples.find((s) => s.path)?.id ?? "",
@@ -33,11 +56,11 @@ const state: UiState = {
 const app = document.querySelector<HTMLElement>("#app")!;
 let graph: AuditionGraph | null = null;
 let bufferCache = new Map<string, AudioBuffer>();
+let sampleSwapToken = 0;
 
 function sampleUrl(id: string): string | null {
   const s = lex.samples.find((x) => x.id === id);
   if (!s?.path) return null;
-  // Vite public + monorepo: curated wav copied/served from public
   const name = s.path.split("/").pop();
   return `${import.meta.env.BASE_URL}samples/${name}`;
 }
@@ -76,6 +99,33 @@ function paint() {
   render(app, state);
 }
 
+function paintStatus() {
+  const el = app.querySelector<HTMLElement>("[data-status]");
+  if (el) el.textContent = state.status;
+}
+
+function selectTerm(termId: string, historyMode: "push" | "replace" | false = "push") {
+  if (!lex.terms[termId]) return;
+  if (termId === state.selectedId) {
+    if (historyMode) syncUrl(termId, historyMode);
+    return;
+  }
+  state.selectedId = termId;
+  state.values = defaultParams(lex.terms[termId]);
+  applyEffect();
+  if (historyMode) syncUrl(termId, historyMode);
+  paint();
+}
+
+async function startPlayback() {
+  const g = await ensureGraph();
+  const buf = await loadSample(state.sampleId);
+  applyEffect();
+  g.playBuffer(buf, true);
+  state.playing = true;
+  state.status = `Playing · ${lex.samples.find((s) => s.id === state.sampleId)?.attribution ?? ""}`;
+}
+
 async function togglePlay() {
   if (state.playing) {
     graph?.stop();
@@ -85,26 +135,47 @@ async function togglePlay() {
     return;
   }
   try {
-    const g = await ensureGraph();
-    const buf = await loadSample(state.sampleId);
-    applyEffect();
-    g.playBuffer(buf, true);
-    state.playing = true;
-    state.status = `Playing · ${lex.samples.find((s) => s.id === state.sampleId)?.attribution ?? ""}`;
+    await startPlayback();
   } catch (e) {
+    state.playing = false;
     state.status = `Audition error: ${e instanceof Error ? e.message : String(e)}`;
   }
   paint();
+}
+
+/** Swap the audition buffer without rebuilding the UI (keeps the sample select focused). */
+async function hotSwapSample(sampleId: string) {
+  const token = ++sampleSwapToken;
+  state.sampleId = sampleId;
+  if (!state.playing) {
+    state.status = `Selected · ${lex.samples.find((s) => s.id === sampleId)?.title ?? sampleId}`;
+    paintStatus();
+    return;
+  }
+  try {
+    state.status = "Loading sample…";
+    paintStatus();
+    const buf = await loadSample(sampleId);
+    if (token !== sampleSwapToken) return;
+    const g = await ensureGraph();
+    if (token !== sampleSwapToken) return;
+    applyEffect();
+    g.playBuffer(buf, true);
+    state.playing = true;
+    state.status = `Playing · ${lex.samples.find((s) => s.id === sampleId)?.attribution ?? ""}`;
+    paintStatus();
+  } catch (e) {
+    if (token !== sampleSwapToken) return;
+    state.status = `Audition error: ${e instanceof Error ? e.message : String(e)}`;
+    paintStatus();
+  }
 }
 
 app.addEventListener("click", async (ev) => {
   const t = ev.target as HTMLElement;
   const termBtn = t.closest<HTMLElement>("[data-term]");
   if (termBtn?.dataset.term) {
-    state.selectedId = termBtn.dataset.term;
-    state.values = defaultParams(lex.terms[state.selectedId]);
-    applyEffect();
-    paint();
+    selectTerm(termBtn.dataset.term, "push");
     return;
   }
   const action = t.closest<HTMLElement>("[data-action]")?.dataset.action;
@@ -155,14 +226,7 @@ app.addEventListener("click", async (ev) => {
   }
   const use = t.closest<HTMLElement>("[data-use-sample]")?.dataset.useSample;
   if (use) {
-    state.sampleId = use;
-    state.status = `Selected sample ${use}`;
-    if (state.playing) {
-      state.playing = false;
-      graph?.stop();
-      await togglePlay();
-      return;
-    }
+    await hotSwapSample(use);
     paint();
   }
 });
@@ -172,11 +236,6 @@ app.addEventListener("input", (ev) => {
   if (t.matches("[data-action=search]")) {
     state.query = (t as HTMLInputElement).value;
     paintTree(app, state);
-    return;
-  }
-  if (t.matches("[data-action=sample]")) {
-    state.sampleId = (t as HTMLSelectElement).value;
-    // Keep select open/focus; no need to rebuild the whole shell.
     return;
   }
   if (t.matches("[data-param]")) {
@@ -190,14 +249,28 @@ app.addEventListener("input", (ev) => {
       state.values[id] = Number.isNaN(Number(raw)) ? raw : Number(raw);
     }
     applyEffect();
-    // In-place update — full paint() would destroy the range mid-drag.
     paintLive(app, state, id);
   }
 });
 
-window.addEventListener("resize", () => {
-  const term = lex.terms[state.selectedId];
-  const canvas = app.querySelector<HTMLCanvasElement>("[data-viz]");
-  if (canvas && term) paintLive(app, state);
+app.addEventListener("change", (ev) => {
+  const t = ev.target as HTMLSelectElement;
+  if (!t.matches("[data-action=sample]")) return;
+  void hotSwapSample(t.value);
 });
+
+window.addEventListener("popstate", () => {
+  const id = termFromLocation();
+  if (id === state.selectedId) return;
+  state.selectedId = id;
+  state.values = defaultParams(lex.terms[id]);
+  applyEffect();
+  paint();
+});
+
+window.addEventListener("resize", () => {
+  paintLive(app, state);
+});
+
+syncUrl(initialTerm, "replace");
 paint();

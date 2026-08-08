@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-08-08 — Term URL routing + live sample swap
+
+* link:changelog-details/2026-08-08%20-%20term-url-sample-swap.adoc[Details]
+
 == 2026-08-08 — Fix slider value wrap jump
 
 * link:changelog-details/2026-08-08%20-%20slider-value-nowrap.adoc[Details]

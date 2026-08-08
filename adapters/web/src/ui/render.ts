@@ -344,7 +344,7 @@ function renderTermPage(
           <button type="button" data-action="toggle-samples">Download samples</button>
           <button type="button" data-action="about">About</button>
         </div>
-        <p class="meta" style="color:var(--muted);font-size:0.85rem">${escapeHtml(state.status)}</p>
+        <p class="meta" data-status style="color:var(--muted);font-size:0.85rem">${escapeHtml(state.status)}</p>
 
         ${
           state.showSamples
