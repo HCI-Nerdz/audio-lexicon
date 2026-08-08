@@ -1,0 +1,24 @@
+{
+  "name": "@hci-nerdz/audio-lexicon",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "description": "Pro-audio filter and processing literacy UI — shared catalog with multi-toolkit adapters",
+  "scripts": {
+    "dev": "node scripts/sync-web-data.mjs && pnpm --filter @hci-nerdz/audio-lexicon-web dev",
+    "build": "node scripts/build-catalog.mjs && node scripts/sync-web-data.mjs && pnpm --filter @hci-nerdz/audio-lexicon-web build",
+    "check": "pnpm --filter @hci-nerdz/core-ts check && pnpm --filter @hci-nerdz/audio-lexicon-web check",
+    "validate:catalog": "node scripts/validate-catalog.mjs",
+    "fetch:samples": "node scripts/fetch-samples.mjs",
+    "generate:tone": "node scripts/generate-tone-sample.mjs",
+    "sync:web": "node scripts/sync-web-data.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "typescript": "^5.8.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

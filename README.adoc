@@ -1,0 +1,68 @@
+ifndef::env-github[:icons: font]
+:toc: preamble
+:toclevels: 2
+:sectanchors:
+
+= audio-lexicon
+
+Pro-audio filter and processing literacy UI — shared catalog with multi-toolkit adapters.
+
+link:https://hci-nerdz.github.io/audio-lexicon/[Try the demo]
+·
+link:https://github.com/HCI-Nerdz/audio-lexicon/issues[Report Bug]
+
+Part of link:https://github.com/HCI-Nerdz[HCI Nerdz].
+
+== About
+
+Professional audio apps expose filters and routing terms that mean little without history and audition.
+*audio-lexicon* puts a searchable term tree on the left and, for each term:
+
+* plain-language meaning
+* historical / original usage
+* visualization
+* live parameter controls
+* A/B audition on royalty-free music
+* EqualizerAPO / OBS export snippets when mappable
+
+Not a system-wide APO host and not an OBS upstream contribution.
+
+== Architecture
+
+[source]
+----
+catalog/            shared terminology + sample metadata (source of truth)
+schemas/            JSON Schema for catalog validation
+packages/core-ts/   parse, search, params, export, Web Audio recipes
+adapters/web        Vite reference UI (GitHub Pages)
+adapters/d-gtkd     D + GtkD
+adapters/cpp-qt     C++ + Qt 6 (EqualizerAPO-aligned)
+adapters/cpp-imgui  C++ + Dear ImGui
+adapters/rust-iced  Rust + iced
+adapters/rust-egui  Rust + egui
+adapters/obs-dock   out-of-tree OBS Qt dock (do not upstream)
+----
+
+== Quick start (web)
+
+[source,shell]
+----
+pnpm install
+pnpm generate:tone
+pnpm validate:catalog
+pnpm dev
+----
+
+Demo `base` is `/audio-lexicon/` for project Pages under `hci-nerdz.github.io`.
+
+== Native adapters
+
+See each adapter `README.adoc` for toolkit-specific build steps (GtkD, Qt 6, ImGui, iced, egui, OBS plugin template).
+
+== Version
+
+See link:version.json[version.json] and link:CHANGELOG.adoc[CHANGELOG.adoc].
+
+== License
+
+MIT — link:LICENSE[LICENSE]. Sample tracks carry their own CC0 / CC licenses listed in `catalog/lexicon.json`.

@@ -1,0 +1,2592 @@
+{
+  "version": "0.1.0",
+  "tree": [
+    {
+      "id": "eq-filters",
+      "label": "EQ & filters",
+      "children": [
+        {
+          "id": "node-peaking-eq",
+          "label": "Peaking EQ (bell)",
+          "termId": "peaking-eq"
+        },
+        {
+          "id": "node-low-pass",
+          "label": "Low-pass (high-cut)",
+          "termId": "low-pass"
+        },
+        {
+          "id": "node-high-pass",
+          "label": "High-pass (low-cut)",
+          "termId": "high-pass"
+        },
+        {
+          "id": "node-low-shelf",
+          "label": "Low shelf",
+          "termId": "low-shelf"
+        },
+        {
+          "id": "node-high-shelf",
+          "label": "High shelf",
+          "termId": "high-shelf"
+        },
+        {
+          "id": "node-notch",
+          "label": "Notch (band-reject)",
+          "termId": "notch"
+        },
+        {
+          "id": "node-band-pass",
+          "label": "Band-pass",
+          "termId": "band-pass"
+        },
+        {
+          "id": "node-all-pass",
+          "label": "All-pass",
+          "termId": "all-pass"
+        },
+        {
+          "id": "node-q-bandwidth",
+          "label": "Q / bandwidth",
+          "termId": "q-bandwidth"
+        },
+        {
+          "id": "node-slope-db-oct",
+          "label": "Slope (dB/octave)",
+          "termId": "slope-db-oct"
+        },
+        {
+          "id": "node-cutoff",
+          "label": "Cutoff frequency",
+          "termId": "cutoff"
+        },
+        {
+          "id": "node-resonance",
+          "label": "Resonance",
+          "termId": "resonance"
+        },
+        {
+          "id": "node-butterworth",
+          "label": "Butterworth",
+          "termId": "butterworth"
+        },
+        {
+          "id": "node-linkwitz-riley",
+          "label": "Linkwitz-Riley",
+          "termId": "linkwitz-riley"
+        },
+        {
+          "id": "node-graphic-eq",
+          "label": "Graphic EQ",
+          "termId": "graphic-eq"
+        },
+        {
+          "id": "node-linear-vs-minimum-phase",
+          "label": "Linear-phase vs minimum-phase",
+          "termId": "linear-vs-minimum-phase"
+        }
+      ]
+    },
+    {
+      "id": "dynamics",
+      "label": "Dynamics",
+      "children": [
+        {
+          "id": "node-compressor",
+          "label": "Compressor",
+          "termId": "compressor"
+        },
+        {
+          "id": "node-limiter",
+          "label": "Limiter",
+          "termId": "limiter"
+        },
+        {
+          "id": "node-expander",
+          "label": "Expander",
+          "termId": "expander"
+        },
+        {
+          "id": "node-gate",
+          "label": "Noise gate",
+          "termId": "gate"
+        },
+        {
+          "id": "node-ducking",
+          "label": "Ducking",
+          "termId": "ducking"
+        },
+        {
+          "id": "node-sidechain",
+          "label": "Sidechain",
+          "termId": "sidechain"
+        },
+        {
+          "id": "node-threshold",
+          "label": "Threshold",
+          "termId": "threshold"
+        },
+        {
+          "id": "node-ratio",
+          "label": "Ratio",
+          "termId": "ratio"
+        },
+        {
+          "id": "node-attack-release",
+          "label": "Attack / release",
+          "termId": "attack-release"
+        },
+        {
+          "id": "node-knee",
+          "label": "Knee",
+          "termId": "knee"
+        },
+        {
+          "id": "node-makeup-gain",
+          "label": "Makeup gain",
+          "termId": "makeup-gain"
+        },
+        {
+          "id": "node-parallel-compression",
+          "label": "Parallel compression",
+          "termId": "parallel-compression"
+        },
+        {
+          "id": "node-multiband-dynamics",
+          "label": "Multiband dynamics",
+          "termId": "multiband-dynamics"
+        },
+        {
+          "id": "node-upward-compression",
+          "label": "Upward compression",
+          "termId": "upward-compression"
+        }
+      ]
+    },
+    {
+      "id": "time-space",
+      "label": "Time & space",
+      "children": [
+        {
+          "id": "node-delay",
+          "label": "Delay",
+          "termId": "delay"
+        },
+        {
+          "id": "node-slapback",
+          "label": "Slapback delay",
+          "termId": "slapback"
+        },
+        {
+          "id": "node-ping-pong",
+          "label": "Ping-pong delay",
+          "termId": "ping-pong"
+        },
+        {
+          "id": "node-reverb",
+          "label": "Reverb",
+          "termId": "reverb"
+        },
+        {
+          "id": "node-pre-delay",
+          "label": "Pre-delay",
+          "termId": "pre-delay"
+        },
+        {
+          "id": "node-dry-wet",
+          "label": "Dry / wet",
+          "termId": "dry-wet"
+        },
+        {
+          "id": "node-convolution",
+          "label": "Convolution",
+          "termId": "convolution"
+        }
+      ]
+    },
+    {
+      "id": "modulation",
+      "label": "Pitch & modulation",
+      "children": [
+        {
+          "id": "node-chorus",
+          "label": "Chorus",
+          "termId": "chorus"
+        },
+        {
+          "id": "node-flanger",
+          "label": "Flanger",
+          "termId": "flanger"
+        },
+        {
+          "id": "node-phaser",
+          "label": "Phaser",
+          "termId": "phaser"
+        },
+        {
+          "id": "node-tremolo",
+          "label": "Tremolo",
+          "termId": "tremolo"
+        },
+        {
+          "id": "node-vibrato",
+          "label": "Vibrato",
+          "termId": "vibrato"
+        },
+        {
+          "id": "node-pitch-shift",
+          "label": "Pitch shift",
+          "termId": "pitch-shift"
+        },
+        {
+          "id": "node-autotune",
+          "label": "Pitch correction (Auto-Tune)",
+          "termId": "autotune"
+        }
+      ]
+    },
+    {
+      "id": "utility-routing",
+      "label": "Utility & routing",
+      "children": [
+        {
+          "id": "node-gain-preamp",
+          "label": "Gain / preamp",
+          "termId": "gain-preamp"
+        },
+        {
+          "id": "node-pan",
+          "label": "Pan",
+          "termId": "pan"
+        },
+        {
+          "id": "node-balance",
+          "label": "Balance",
+          "termId": "balance"
+        },
+        {
+          "id": "node-mute-solo",
+          "label": "Mute / solo",
+          "termId": "mute-solo"
+        },
+        {
+          "id": "node-bus-aux",
+          "label": "Bus / aux / send / return",
+          "termId": "bus-aux"
+        },
+        {
+          "id": "node-insert",
+          "label": "Insert",
+          "termId": "insert"
+        },
+        {
+          "id": "node-phase-invert",
+          "label": "Phase invert (polarity)",
+          "termId": "phase-invert"
+        },
+        {
+          "id": "node-mono-sum",
+          "label": "Mono sum",
+          "termId": "mono-sum"
+        },
+        {
+          "id": "node-stereo-width",
+          "label": "Stereo width",
+          "termId": "stereo-width"
+        },
+        {
+          "id": "node-mid-side",
+          "label": "Mid / Side (M/S)",
+          "termId": "mid-side"
+        },
+        {
+          "id": "node-dither",
+          "label": "Dither",
+          "termId": "dither"
+        },
+        {
+          "id": "node-sample-rate",
+          "label": "Sample rate",
+          "termId": "sample-rate"
+        },
+        {
+          "id": "node-bit-depth",
+          "label": "Bit depth",
+          "termId": "bit-depth"
+        },
+        {
+          "id": "node-latency",
+          "label": "Latency",
+          "termId": "latency"
+        },
+        {
+          "id": "node-buffering",
+          "label": "Buffering",
+          "termId": "buffering"
+        }
+      ]
+    },
+    {
+      "id": "metering",
+      "label": "Metering & analysis",
+      "children": [
+        {
+          "id": "node-peak",
+          "label": "Peak",
+          "termId": "peak"
+        },
+        {
+          "id": "node-rms",
+          "label": "RMS",
+          "termId": "rms"
+        },
+        {
+          "id": "node-lufs",
+          "label": "LUFS / LKFS",
+          "termId": "lufs"
+        },
+        {
+          "id": "node-true-peak",
+          "label": "True peak",
+          "termId": "true-peak"
+        },
+        {
+          "id": "node-spectrum",
+          "label": "Spectrum analyzer",
+          "termId": "spectrum"
+        },
+        {
+          "id": "node-spectrogram",
+          "label": "Spectrogram",
+          "termId": "spectrogram"
+        },
+        {
+          "id": "node-correlation",
+          "label": "Stereo correlation",
+          "termId": "correlation"
+        },
+        {
+          "id": "node-crest-factor",
+          "label": "Crest factor",
+          "termId": "crest-factor"
+        }
+      ]
+    },
+    {
+      "id": "broadcast-live",
+      "label": "Broadcast, live & OBS",
+      "children": [
+        {
+          "id": "node-noise-suppression",
+          "label": "Noise suppression",
+          "termId": "noise-suppression"
+        },
+        {
+          "id": "node-noise-gate-live",
+          "label": "Noise gate (live/OBS)",
+          "termId": "noise-gate-live"
+        },
+        {
+          "id": "node-vst-host",
+          "label": "VST / plugin host",
+          "termId": "vst-host"
+        },
+        {
+          "id": "node-apo",
+          "label": "APO (Audio Processing Object)",
+          "termId": "apo"
+        },
+        {
+          "id": "node-loudness-norm",
+          "label": "Loudness normalization",
+          "termId": "loudness-norm"
+        },
+        {
+          "id": "node-duck-under-voice",
+          "label": "Duck under voice",
+          "termId": "duck-under-voice"
+        },
+        {
+          "id": "node-monitor-vs-program",
+          "label": "Monitor vs program",
+          "termId": "monitor-vs-program"
+        }
+      ]
+    }
+  ],
+  "terms": {
+    "peaking-eq": {
+      "aliases": [
+        "parametric EQ band",
+        "bell filter",
+        "peak filter"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Frequency",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        },
+        {
+          "id": "gain",
+          "label": "Gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "default": 6
+        },
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 1
+        }
+      ],
+      "audition": "biquad-peaking",
+      "exports": {
+        "equalizerApo": "Filter: ON PK Fc {freq} Hz Gain {gain} dB Q {q}",
+        "obs": {
+          "filter_type": "peak_filter",
+          "frequency": "{freq}",
+          "gain": "{gain}",
+          "q": "{q}"
+        }
+      },
+      "commonConfusion": "Not a shelf (which tilts everything above/below a point) and not a graphic EQ slider (fixed center frequencies).",
+      "whenToUse": "Fix a resonant note, add presence, or carve space between instruments.",
+      "id": "peaking-eq",
+      "name": "Peaking EQ (bell)",
+      "category": "eq-filters",
+      "summary": "Boost or cut a band of frequencies around a center point.",
+      "plainMeaning": "A bell-shaped boost or cut centered on a frequency you choose. Narrow Q affects fewer neighbors; wide Q is gentler and broader.",
+      "history": "Grew out of 1970s parametric equalizers (e.g. George Massenburg) that let engineers sweep frequency, gain, and bandwidth continuously instead of fixed graphic bands.",
+      "viz": "freq-response"
+    },
+    "low-pass": {
+      "aliases": [
+        "LPF",
+        "high-cut"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 8000
+        },
+        {
+          "id": "q",
+          "label": "Q / resonance",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 10,
+          "step": 0.1,
+          "default": 0.707
+        }
+      ],
+      "audition": "biquad-lowpass",
+      "exports": {
+        "equalizerApo": "Filter: ON LPQ Fc {freq} Hz Q {q}",
+        "obs": {
+          "filter_type": "low_pass_filter_2_pole",
+          "cutoff_hz": "{freq}"
+        }
+      },
+      "commonConfusion": "Low-pass removes highs; high-pass removes lows. Names describe what they pass, not what they cut.",
+      "whenToUse": "Tame harshness, hide noise, or keep a bass part from competing with cymbals.",
+      "id": "low-pass",
+      "name": "Low-pass (high-cut)",
+      "category": "eq-filters",
+      "summary": "Lets lows through; attenuates highs above the cutoff.",
+      "plainMeaning": "Frequencies above the cutoff are reduced. Steeper slopes remove highs more aggressively.",
+      "history": "Classic analog synthesis and loudspeaker crossover building block; ‘high-cut’ is the mix-desk name for the same idea.",
+      "viz": "freq-response"
+    },
+    "high-pass": {
+      "aliases": [
+        "HPF",
+        "low-cut",
+        "rumble filter"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 2000,
+          "step": 1,
+          "default": 80
+        },
+        {
+          "id": "q",
+          "label": "Q / resonance",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 10,
+          "step": 0.1,
+          "default": 0.707
+        }
+      ],
+      "audition": "biquad-highpass",
+      "exports": {
+        "equalizerApo": "Filter: ON HPQ Fc {freq} Hz Q {q}",
+        "obs": {
+          "filter_type": "high_pass_filter_2_pole",
+          "cutoff_hz": "{freq}"
+        }
+      },
+      "commonConfusion": "People say ‘roll off the lows’ meaning high-pass, not low-pass.",
+      "whenToUse": "Clean mic stands, HVAC rumble, and unused low end before mixing.",
+      "id": "high-pass",
+      "name": "High-pass (low-cut)",
+      "category": "eq-filters",
+      "summary": "Lets highs through; attenuates lows below the cutoff.",
+      "plainMeaning": "Cuts rumble and low mud while keeping the rest of the signal. Every vocal and many mics start here.",
+      "history": "Recording-console channel strips standardized low-cut switches long before DAW plugins; slopes often 6–24 dB/oct.",
+      "viz": "freq-response"
+    },
+    "low-shelf": {
+      "aliases": [
+        "bass shelf"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Corner",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 1000,
+          "step": 1,
+          "default": 120
+        },
+        {
+          "id": "gain",
+          "label": "Gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "default": 3
+        }
+      ],
+      "audition": "biquad-lowshelf",
+      "exports": {
+        "equalizerApo": "Filter: ON LSC Fc {freq} Hz Gain {gain} dB",
+        "obs": {
+          "filter_type": "low_shelf",
+          "frequency": "{freq}",
+          "gain": "{gain}"
+        }
+      },
+      "commonConfusion": "A shelf changes a whole region; a peaking band is local.",
+      "whenToUse": "Overall bass weight without surgically targeting one note.",
+      "id": "low-shelf",
+      "name": "Low shelf",
+      "category": "eq-filters",
+      "summary": "Boost or cut everything below a corner frequency by roughly the same amount.",
+      "plainMeaning": "A gentle tilt of the bass region rather than a narrow bell. Think ‘more/less bass’ as a broad stroke.",
+      "history": "Tone controls on hi-fi amps and mixing desks used shelving filters decades before parametric bells were common.",
+      "viz": "freq-response"
+    },
+    "high-shelf": {
+      "aliases": [
+        "treble shelf",
+        "air shelf"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Corner",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 1000,
+          "max": 20000,
+          "step": 1,
+          "default": 8000
+        },
+        {
+          "id": "gain",
+          "label": "Gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "default": 3
+        }
+      ],
+      "audition": "biquad-highshelf",
+      "exports": {
+        "equalizerApo": "Filter: ON HSC Fc {freq} Hz Gain {gain} dB",
+        "obs": {
+          "filter_type": "high_shelf",
+          "frequency": "{freq}",
+          "gain": "{gain}"
+        }
+      },
+      "commonConfusion": "Not the same as a high-pass (which removes lows).",
+      "whenToUse": "Add sheen or reduce harshness across the top end.",
+      "id": "high-shelf",
+      "name": "High shelf",
+      "category": "eq-filters",
+      "summary": "Boost or cut everything above a corner frequency.",
+      "plainMeaning": "Broad treble or ‘air’ control. Often used for polish rather than surgical fixes.",
+      "history": "Companion to the bass shelf on classic tone stacks and console channel EQs.",
+      "viz": "freq-response"
+    },
+    "notch": {
+      "aliases": [
+        "band-reject",
+        "narrow cut"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Frequency",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 60
+        },
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 1,
+          "max": 100,
+          "step": 0.5,
+          "default": 10
+        }
+      ],
+      "audition": "biquad-notch",
+      "exports": {
+        "equalizerApo": "Filter: ON NO Fc {freq} Hz Q {q}",
+        "obs": {
+          "filter_type": "notch_filter",
+          "frequency": "{freq}",
+          "q": "{q}"
+        }
+      },
+      "commonConfusion": "A notch is a cut; peaking EQ can boost or cut.",
+      "whenToUse": "Kill 50/60 Hz hum harmonics or a ringing room mode without gutting the tone.",
+      "id": "notch",
+      "name": "Notch (band-reject)",
+      "category": "eq-filters",
+      "summary": "Deep, narrow cut at a center frequency.",
+      "plainMeaning": "Scoops out a thin slice—useful for hum, feedback, or a single bad resonance.",
+      "history": "Feedback destroyers and graphic notches in live sound popularized surgical reject filters.",
+      "viz": "freq-response"
+    },
+    "band-pass": {
+      "aliases": [
+        "BPF"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Frequency",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        },
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 1
+        },
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 2
+        }
+      ],
+      "audition": "biquad-bandpass",
+      "exports": {
+        "equalizerApo": "Filter: ON BP Fc {freq} Hz Q {q}"
+      },
+      "commonConfusion": "Band-pass keeps a band; band-reject (notch) removes one.",
+      "whenToUse": "Special effects or isolating a frequency region for analysis.",
+      "id": "band-pass",
+      "name": "Band-pass",
+      "category": "eq-filters",
+      "summary": "Passes a mid band; attenuates below and above.",
+      "plainMeaning": "Only a slice of the spectrum remains—telephone effects, drum tuning, creative filtering.",
+      "history": "Standard second-order filter type in analog synthesis (alongside LP/HP/notch).",
+      "viz": "freq-response"
+    },
+    "all-pass": {
+      "aliases": [
+        "phase EQ"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Frequency",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        },
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 10,
+          "step": 0.1,
+          "default": 0.707
+        }
+      ],
+      "audition": "biquad-allpass",
+      "exports": {
+        "equalizerApo": "Filter: ON AP Fc {freq} Hz Q {q}"
+      },
+      "commonConfusion": "‘All-pass’ does not mean ‘no effect’—phase still moves.",
+      "whenToUse": "Phase alignment, multi-way speakers, and modulation FX building blocks.",
+      "id": "all-pass",
+      "name": "All-pass",
+      "category": "eq-filters",
+      "summary": "Keeps magnitude flat while shifting phase around a frequency.",
+      "plainMeaning": "You may not hear a solo all-pass as a tone change, but it rearranges phase—useful in crossovers and phasers.",
+      "history": "Critical in Linkwitz-Riley crossovers and analog phaser circuits.",
+      "viz": "freq-response"
+    },
+    "q-bandwidth": {
+      "aliases": [
+        "Q factor",
+        "BW"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "q",
+          "label": "Q",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 1
+        }
+      ],
+      "audition": "biquad-peaking",
+      "exports": {},
+      "commonConfusion": "Q is not gain. Gain is how much; Q is how wide.",
+      "whenToUse": "Decide whether a cut should be surgical or musical.",
+      "id": "q-bandwidth",
+      "name": "Q / bandwidth",
+      "category": "eq-filters",
+      "summary": "How wide or narrow an EQ band is.",
+      "plainMeaning": "Higher Q = narrower bell. Bandwidth is the inverse idea expressed in octaves.",
+      "history": "Q comes from resonant circuits in electronics; audio borrowed the same dimensionless ratio.",
+      "viz": "freq-response"
+    },
+    "slope-db-oct": {
+      "aliases": [
+        "filter order",
+        "12 dB/oct",
+        "24 dB/oct"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        },
+        {
+          "id": "order",
+          "label": "Order",
+          "kind": "enum",
+          "default": 2,
+          "options": [
+            {
+              "value": 1,
+              "label": "6 dB/oct"
+            },
+            {
+              "value": 2,
+              "label": "12 dB/oct"
+            },
+            {
+              "value": 4,
+              "label": "24 dB/oct"
+            }
+          ]
+        }
+      ],
+      "audition": "biquad-lowpass",
+      "exports": {},
+      "commonConfusion": "Steeper is not always better—phase and resonance change too.",
+      "whenToUse": "Choose gentle musical rolls vs surgical bricks.",
+      "id": "slope-db-oct",
+      "name": "Slope (dB/octave)",
+      "category": "eq-filters",
+      "summary": "How steeply a filter attenuates past the cutoff.",
+      "plainMeaning": "Each doubling of frequency (one octave), level drops by N dB past the cutoff for an ideal slope description.",
+      "history": "Filter order (1st, 2nd, 4th…) maps to 6 dB/oct steps in classic analog designs.",
+      "viz": "freq-response"
+    },
+    "butterworth": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        }
+      ],
+      "audition": "biquad-lowpass",
+      "exports": {},
+      "commonConfusion": "Butterworth vs Linkwitz-Riley: LR is often preferred for speaker crossovers because summed response is flat.",
+      "whenToUse": "When you want a clean, predictable roll-off without passband ripple.",
+      "id": "butterworth",
+      "name": "Butterworth",
+      "category": "eq-filters",
+      "summary": "Maximally flat passband filter response family.",
+      "plainMeaning": "No ripple in the passband; common default for ‘transparent’ crossovers and HPFs.",
+      "history": "Named after Stephen Butterworth (1930 paper on filter amplifiers).",
+      "viz": "freq-response"
+    },
+    "linkwitz-riley": {
+      "aliases": [
+        "LR4",
+        "LR crossover"
+      ],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Not every DAW ‘crossover’ is true LR alignment.",
+      "whenToUse": "Designing or understanding speaker/PA crossovers.",
+      "id": "linkwitz-riley",
+      "name": "Linkwitz-Riley",
+      "category": "eq-filters",
+      "summary": "Crossover filter alignment that sums flat on-axis.",
+      "plainMeaning": "Two cascaded Butterworth sections; popular in multi-way speakers so lows+highs add correctly.",
+      "history": "Siegfried Linkwitz and Russ Riley; widely taught in DIY speaker and PA system design.",
+      "viz": "freq-response"
+    },
+    "graphic-eq": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {
+        "equalizerApo": "GraphicEQ: 25 0; 40 0; 63 0; 100 0; 160 0; 250 0; 400 0; 630 0; 1000 0; 1600 0; 2500 0; 4000 0; 6300 0; 10000 0; 16000 0"
+      },
+      "commonConfusion": "Graphic ≠ parametric; centers are fixed.",
+      "whenToUse": "Room tuning, feedback hunting, broad tonal shape.",
+      "id": "graphic-eq",
+      "name": "Graphic EQ",
+      "category": "eq-filters",
+      "summary": "Bank of fixed-frequency boost/cut sliders.",
+      "plainMeaning": "You see a ‘graphic’ of the curve as slider positions. Fast for live tuning; less precise than full parametric.",
+      "history": "Live sound and consumer hi-fi popularized octave and 1/3-octave graphic equalizers.",
+      "viz": "freq-response"
+    },
+    "linear-vs-minimum-phase": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Linear-phase is not ‘higher quality’ by default—trade latency and pre-echo.",
+      "whenToUse": "Mastering surgical cuts sometimes use linear-phase; tracking often prefers minimum-phase.",
+      "id": "linear-vs-minimum-phase",
+      "name": "Linear-phase vs minimum-phase",
+      "category": "eq-filters",
+      "summary": "Two ways EQ can treat phase while changing frequency balance.",
+      "plainMeaning": "Minimum-phase (typical analog-style) shifts phase as it EQ’s. Linear-phase keeps phase relationships but can introduce pre-ringing and latency.",
+      "history": "Digital EQ made linear-phase practical; analog desks were inherently minimum-phase.",
+      "viz": "conceptual"
+    },
+    "cutoff": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 1000
+        }
+      ],
+      "audition": "biquad-lowpass",
+      "exports": {},
+      "commonConfusion": "Cutoff is not always where the sound ‘disappears’—slope still continues.",
+      "whenToUse": "Any LP/HP/shelf/crossover control labeled frequency or cutoff.",
+      "id": "cutoff",
+      "name": "Cutoff frequency",
+      "category": "eq-filters",
+      "summary": "The corner where a filter begins its primary roll-off.",
+      "plainMeaning": "Usually defined at −3 dB for many classic filters.",
+      "history": "Inherited from electrical filter theory.",
+      "viz": "freq-response"
+    },
+    "resonance": {
+      "aliases": [
+        "filter emphasis"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "freq",
+          "label": "Cutoff",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 20,
+          "max": 20000,
+          "step": 1,
+          "default": 800
+        },
+        {
+          "id": "q",
+          "label": "Resonance",
+          "kind": "float",
+          "unit": "",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 5
+        }
+      ],
+      "audition": "biquad-lowpass",
+      "exports": {},
+      "commonConfusion": "Resonance can self-oscillate on some designs—not the same as a gentle EQ Q.",
+      "whenToUse": "Creative filter sweeps; use sparingly on mix EQ.",
+      "id": "resonance",
+      "name": "Resonance",
+      "category": "eq-filters",
+      "summary": "Emphasis near the cutoff, related to Q.",
+      "plainMeaning": "On synth filters, resonance peaking at the cutoff creates the classic ‘wah’ or scream.",
+      "history": "Moog and other subtractive synths made resonant low-pass iconic.",
+      "viz": "freq-response"
+    },
+    "compressor": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "threshold",
+          "label": "Threshold",
+          "kind": "float",
+          "unit": "dB",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "default": -18
+        },
+        {
+          "id": "ratio",
+          "label": "Ratio",
+          "kind": "float",
+          "unit": ":1",
+          "min": 1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 0.1,
+          "max": 200,
+          "step": 0.1,
+          "default": 10
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "default": 100
+        },
+        {
+          "id": "makeup",
+          "label": "Makeup gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": 0,
+          "max": 24,
+          "step": 0.1,
+          "default": 0
+        }
+      ],
+      "audition": "compressor",
+      "exports": {
+        "obs": {
+          "filter": "compressor_filter",
+          "ratio": "{ratio}",
+          "threshold": "{threshold}",
+          "attack_time": "{attack}",
+          "release_time": "{release}"
+        }
+      },
+      "commonConfusion": "Compression reduces dynamic range; limiting is a high-ratio special case.",
+      "whenToUse": "Control peaks, glue a bus, or shape punch with attack/release.",
+      "id": "compressor",
+      "name": "Compressor",
+      "category": "dynamics",
+      "summary": "Automatically reduces level when the signal exceeds a threshold.",
+      "plainMeaning": "Turns down loud parts (and often adds makeup gain) so dynamics sit more evenly.",
+      "history": "Broadcast and recording from the mid-20th century used leveling amplifiers (e.g. LA-2A, 1176) before digital plugins.",
+      "viz": "envelope"
+    },
+    "limiter": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "ceiling",
+          "label": "Ceiling",
+          "kind": "float",
+          "unit": "dB",
+          "min": -12,
+          "max": 0,
+          "step": 0.1,
+          "default": -1
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 500,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "compressor",
+      "exports": {},
+      "commonConfusion": "A limiter still needs sensible threshold/ceiling—it is not magic headroom.",
+      "whenToUse": "Catch peaks before clipping; mastering ceilings; live protection.",
+      "id": "limiter",
+      "name": "Limiter",
+      "category": "dynamics",
+      "summary": "Compressor with a very high ratio that prevents exceeding a ceiling.",
+      "plainMeaning": "A ‘brick wall’ (or soft) ceiling so peaks cannot pass a set level.",
+      "history": "Broadcast transmitters and vinyl cutting required peak protection; brickwall limiters became mastering staples in the loudness era.",
+      "viz": "envelope"
+    },
+    "expander": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [
+        {
+          "id": "threshold",
+          "label": "Threshold",
+          "kind": "float",
+          "unit": "dB",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "default": -18
+        },
+        {
+          "id": "ratio",
+          "label": "Ratio",
+          "kind": "float",
+          "unit": ":1",
+          "min": 1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 0.1,
+          "max": 200,
+          "step": 0.1,
+          "default": 10
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "default": 100
+        },
+        {
+          "id": "makeup",
+          "label": "Makeup gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": 0,
+          "max": 24,
+          "step": 0.1,
+          "default": 0
+        }
+      ],
+      "audition": "gate",
+      "exports": {},
+      "commonConfusion": "Expander ≠ compressor; watch the transfer curve direction.",
+      "whenToUse": "Reduce room noise between phrases without a hard gate chop.",
+      "id": "expander",
+      "name": "Expander",
+      "category": "dynamics",
+      "summary": "Increases dynamic range by turning down signals below a threshold.",
+      "plainMeaning": "Quiet parts get quieter—opposite direction of a compressor.",
+      "history": "Noise reduction and creative dynamics; related to gates.",
+      "viz": "envelope"
+    },
+    "gate": {
+      "aliases": [
+        "gate"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "threshold",
+          "label": "Threshold",
+          "kind": "float",
+          "unit": "dB",
+          "min": -80,
+          "max": 0,
+          "step": 0.5,
+          "default": -40
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 0.1,
+          "max": 100,
+          "step": 0.1,
+          "default": 1
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "default": 200
+        }
+      ],
+      "audition": "gate",
+      "exports": {
+        "obs": {
+          "filter": "noise_gate_filter",
+          "open_threshold": "{threshold}",
+          "attack_time": "{attack}",
+          "close_threshold": "{threshold}",
+          "hold_time": 200,
+          "release_time": "{release}"
+        }
+      },
+      "commonConfusion": "Too-high threshold chops consonants and decays.",
+      "whenToUse": "Drum bleed, noisy amps, podcast room tone between words (carefully).",
+      "id": "gate",
+      "name": "Noise gate",
+      "category": "dynamics",
+      "summary": "Mutes or attenuates when level falls below a threshold.",
+      "plainMeaning": "When the signal is quiet enough, the gate closes. Attack/hold/release shape the open/close.",
+      "history": "Live drums and guitar amps used gates to kill bleed; still standard on console channels.",
+      "viz": "envelope"
+    },
+    "ducking": {
+      "aliases": [
+        "auto-duck",
+        "voice-over duck"
+      ],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "depth",
+          "label": "Duck depth",
+          "kind": "float",
+          "unit": "dB",
+          "min": 0,
+          "max": 24,
+          "step": 0.5,
+          "default": 9
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 200,
+          "step": 1,
+          "default": 20
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 50,
+          "max": 2000,
+          "step": 10,
+          "default": 400
+        }
+      ],
+      "audition": "ducking",
+      "exports": {
+        "obs": {
+          "note": "OBS uses compressor sidechain / source ducking depending on version and filter setup"
+        }
+      },
+      "commonConfusion": "Ducking is a use-case; the mechanism is usually sidechain compression or a dedicated duck module.",
+      "whenToUse": "Podcasts, streams, ads—keep voice intelligible over beds.",
+      "id": "ducking",
+      "name": "Ducking",
+      "category": "dynamics",
+      "summary": "One signal’s level automatically turns another down.",
+      "plainMeaning": "Music ducks under speech: when the voice is present, the bed gets quieter, then recovers.",
+      "history": "Radio voice-over and broadcast production; sidechain compression popularized the effect in dance music.",
+      "viz": "envelope"
+    },
+    "sidechain": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "threshold",
+          "label": "Threshold",
+          "kind": "float",
+          "unit": "dB",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "default": -18
+        },
+        {
+          "id": "ratio",
+          "label": "Ratio",
+          "kind": "float",
+          "unit": ":1",
+          "min": 1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 0.1,
+          "max": 200,
+          "step": 0.1,
+          "default": 10
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "default": 100
+        },
+        {
+          "id": "makeup",
+          "label": "Makeup gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": 0,
+          "max": 24,
+          "step": 0.1,
+          "default": 0
+        }
+      ],
+      "audition": "ducking",
+      "exports": {},
+      "commonConfusion": "Sidechain is the control path, not a genre.",
+      "whenToUse": "Ducking, de-essing (split-band key), kick/bass pumping.",
+      "id": "sidechain",
+      "name": "Sidechain",
+      "category": "dynamics",
+      "summary": "A detector path that listens to a different signal than the one being processed.",
+      "plainMeaning": "The compressor (or gate) watches signal B to control signal A—classic kick-ducks-bass.",
+      "history": "Hardware compressors offered key/sidechain inputs; EDM made ‘sidechain’ a household word.",
+      "viz": "envelope"
+    },
+    "threshold": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "threshold",
+          "label": "Threshold",
+          "kind": "float",
+          "unit": "dB",
+          "min": -60,
+          "max": 0,
+          "step": 0.5,
+          "default": -18
+        }
+      ],
+      "audition": "compressor",
+      "exports": {},
+      "commonConfusion": "Threshold alone does nothing without ratio/range.",
+      "whenToUse": "Set how much of the signal engages the processor.",
+      "id": "threshold",
+      "name": "Threshold",
+      "category": "dynamics",
+      "summary": "Level where dynamics processing starts acting.",
+      "plainMeaning": "Above (compressor) or below (gate/expander) this level, the device changes gain.",
+      "history": "Standard control on leveling amps and VCA compressors.",
+      "viz": "envelope"
+    },
+    "ratio": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "ratio",
+          "label": "Ratio",
+          "kind": "float",
+          "unit": ":1",
+          "min": 1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        }
+      ],
+      "audition": "compressor",
+      "exports": {},
+      "commonConfusion": "∞:1 is limiting territory.",
+      "whenToUse": "Gentle glue (low ratio) vs leveling/limiting (high).",
+      "id": "ratio",
+      "name": "Ratio",
+      "category": "dynamics",
+      "summary": "How strongly levels above threshold are reduced.",
+      "plainMeaning": "4:1 means 4 dB over threshold becomes 1 dB at the output (idealized).",
+      "history": "VCA and FET compressor front panels standardized ratio switches.",
+      "viz": "envelope"
+    },
+    "attack-release": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "attack",
+          "label": "Attack",
+          "kind": "float",
+          "unit": "ms",
+          "min": 0.1,
+          "max": 200,
+          "step": 0.1,
+          "default": 10
+        },
+        {
+          "id": "release",
+          "label": "Release",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 2000,
+          "step": 1,
+          "default": 100
+        }
+      ],
+      "audition": "compressor",
+      "exports": {},
+      "commonConfusion": "Fast everything can sound pumpy or distorted; context matters.",
+      "whenToUse": "Preserve transients (slower attack) or catch them (fast attack).",
+      "id": "attack-release",
+      "name": "Attack / release",
+      "category": "dynamics",
+      "summary": "How fast processing engages and recovers.",
+      "plainMeaning": "Attack: how quickly gain reduction starts. Release: how quickly it returns.",
+      "history": "Timing constants define the ‘character’ of classic compressors as much as the gain cell.",
+      "viz": "envelope"
+    },
+    "knee": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Knee is not the same as ratio.",
+      "whenToUse": "Soft for transparent vocals; hard for assertive leveling.",
+      "id": "knee",
+      "name": "Knee",
+      "category": "dynamics",
+      "summary": "Whether compression onset is abrupt (hard) or gradual (soft).",
+      "plainMeaning": "Soft knee starts reducing gain before the exact threshold for a smoother transition.",
+      "history": "Described in compressor manuals as hard vs soft knee curves.",
+      "viz": "envelope"
+    },
+    "makeup-gain": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "makeup",
+          "label": "Makeup",
+          "kind": "float",
+          "unit": "dB",
+          "min": 0,
+          "max": 24,
+          "step": 0.1,
+          "default": 6
+        }
+      ],
+      "audition": "compressor",
+      "exports": {},
+      "commonConfusion": "Makeup can fool you into thinking ‘more compression = better’ because louder wins.",
+      "whenToUse": "Match perceived loudness when A/B’ing bypass.",
+      "id": "makeup-gain",
+      "name": "Makeup gain",
+      "category": "dynamics",
+      "summary": "Output gain to compensate for compression reduction.",
+      "plainMeaning": "After turning peaks down, boost the whole signal so loudness matches again.",
+      "history": "Always present on hardware compressors so comparative leveling was possible.",
+      "viz": "envelope"
+    },
+    "parallel-compression": {
+      "aliases": [
+        "New York compression"
+      ],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Requires a send/blend; not just ‘more ratio’ on one insert.",
+      "whenToUse": "Drums, vocals, mix bus density without killing punch.",
+      "id": "parallel-compression",
+      "name": "Parallel compression",
+      "category": "dynamics",
+      "summary": "Blend a heavily compressed copy under the dry signal.",
+      "plainMeaning": "Keep transients from the dry path while adding body from a squashed parallel path.",
+      "history": "Associated with NYC mix engineers; also called Motown-style parallel techniques in drum rooms.",
+      "viz": "envelope"
+    },
+    "multiband-dynamics": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "More bands ≠ better; crossovers can smear if overused.",
+      "whenToUse": "Mastering, podcast leveling, uneven spectra.",
+      "id": "multiband-dynamics",
+      "name": "Multiband dynamics",
+      "category": "dynamics",
+      "summary": "Split the spectrum and compress/limit each band separately.",
+      "plainMeaning": "Control boom without dulling highs, or tame harshness without thinning lows.",
+      "history": "Broadcast processors and mastering chains adopted multiband limiting heavily.",
+      "viz": "spectrum"
+    },
+    "upward-compression": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Not the same as makeup gain alone.",
+      "whenToUse": "Dialogue consistency without squashing peaks as hard.",
+      "id": "upward-compression",
+      "name": "Upward compression",
+      "category": "dynamics",
+      "summary": "Raises quieter signals toward a target instead of only cutting peaks.",
+      "plainMeaning": "Brings up detail under a ceiling rather than only suppressing loud bits.",
+      "history": "Discussed in modern digital processors and some vintage leveling philosophies.",
+      "viz": "envelope"
+    },
+    "delay": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "time",
+          "label": "Time",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 1000,
+          "step": 1,
+          "default": 250
+        },
+        {
+          "id": "feedback",
+          "label": "Feedback",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 95,
+          "step": 1,
+          "default": 25
+        },
+        {
+          "id": "mix",
+          "label": "Mix",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 30
+        }
+      ],
+      "audition": "delay",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "delay",
+      "name": "Delay",
+      "category": "time-space",
+      "summary": "Echo repeats after a set time.",
+      "plainMeaning": "Echo repeats after a set time.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "waveform"
+    },
+    "slapback": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "time",
+          "label": "Time",
+          "kind": "float",
+          "unit": "ms",
+          "min": 40,
+          "max": 200,
+          "step": 1,
+          "default": 90
+        },
+        {
+          "id": "mix",
+          "label": "Mix",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        }
+      ],
+      "audition": "delay",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "slapback",
+      "name": "Slapback delay",
+      "category": "time-space",
+      "summary": "Single short echo familiar from 1950s rockabilly.",
+      "plainMeaning": "Single short echo familiar from 1950s rockabilly.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "waveform"
+    },
+    "ping-pong": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "time",
+          "label": "Time",
+          "kind": "float",
+          "unit": "ms",
+          "min": 1,
+          "max": 1000,
+          "step": 1,
+          "default": 300
+        },
+        {
+          "id": "feedback",
+          "label": "Feedback",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 95,
+          "step": 1,
+          "default": 35
+        }
+      ],
+      "audition": "delay",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "ping-pong",
+      "name": "Ping-pong delay",
+      "category": "time-space",
+      "summary": "Repeats alternate left/right.",
+      "plainMeaning": "Repeats alternate left/right.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "waveform"
+    },
+    "reverb": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "decay",
+          "label": "Decay",
+          "kind": "float",
+          "unit": "s",
+          "min": 0.1,
+          "max": 8,
+          "step": 0.1,
+          "default": 1.8
+        },
+        {
+          "id": "mix",
+          "label": "Mix",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        }
+      ],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "reverb",
+      "name": "Reverb",
+      "category": "time-space",
+      "summary": "Simulated room reflections (early + late).",
+      "plainMeaning": "Simulated room reflections (early + late).",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "conceptual"
+    },
+    "pre-delay": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "pre-delay",
+      "name": "Pre-delay",
+      "category": "time-space",
+      "summary": "Silence before reverb tail starts—clarifies dry source.",
+      "plainMeaning": "Silence before reverb tail starts—clarifies dry source.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "conceptual"
+    },
+    "dry-wet": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "mix",
+          "label": "Wet",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "dry-wet",
+      "name": "Dry / wet",
+      "category": "time-space",
+      "summary": "Blend of unprocessed vs processed signal.",
+      "plainMeaning": "Blend of unprocessed vs processed signal.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "conceptual"
+    },
+    "convolution": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Delay is discrete repeats; reverb is dense reflections.",
+      "whenToUse": "Space, rhythm, and depth in mixes.",
+      "id": "convolution",
+      "name": "Convolution",
+      "category": "time-space",
+      "summary": "Imprint an impulse response (room, gear) onto audio.",
+      "plainMeaning": "Imprint an impulse response (room, gear) onto audio.",
+      "history": "Studio effects evolved from tape loops, plates, chambers, and digital algorithms into plugin standards.",
+      "viz": "conceptual"
+    },
+    "chorus": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "tremolo",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "chorus",
+      "name": "Chorus",
+      "category": "modulation",
+      "summary": "Detuned/delayed copies thicken the sound.",
+      "plainMeaning": "Detuned/delayed copies thicken the sound.",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "flanger": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "tremolo",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "flanger",
+      "name": "Flanger",
+      "category": "modulation",
+      "summary": "Short modulated delay with feedback—jet whoosh.",
+      "plainMeaning": "Short modulated delay with feedback—jet whoosh.",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "phaser": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "tremolo",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "phaser",
+      "name": "Phaser",
+      "category": "modulation",
+      "summary": "All-pass stages create sweeping notches.",
+      "plainMeaning": "All-pass stages create sweeping notches.",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "tremolo": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "tremolo",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "tremolo",
+      "name": "Tremolo",
+      "category": "modulation",
+      "summary": "Amplitude modulation (volume wobble).",
+      "plainMeaning": "Amplitude modulation (volume wobble).",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "vibrato": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "vibrato",
+      "name": "Vibrato",
+      "category": "modulation",
+      "summary": "Pitch modulation (frequency wobble).",
+      "plainMeaning": "Pitch modulation (frequency wobble).",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "pitch-shift": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "pitch-shift",
+      "name": "Pitch shift",
+      "category": "modulation",
+      "summary": "Change pitch with or without changing duration.",
+      "plainMeaning": "Change pitch with or without changing duration.",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "autotune": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [
+        {
+          "id": "rate",
+          "label": "Rate",
+          "kind": "float",
+          "unit": "Hz",
+          "min": 0.1,
+          "max": 20,
+          "step": 0.1,
+          "default": 4
+        },
+        {
+          "id": "depth",
+          "label": "Depth",
+          "kind": "float",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Tremolo = level; vibrato = pitch.",
+      "whenToUse": "Motion, width, or corrective pitch work.",
+      "id": "autotune",
+      "name": "Pitch correction (Auto-Tune)",
+      "category": "modulation",
+      "summary": "Detect and nudge pitch toward a scale.",
+      "plainMeaning": "Detect and nudge pitch toward a scale.",
+      "history": "Analog pedals and studio racks defined these names; digital plugins emulate and extend them.",
+      "viz": "waveform"
+    },
+    "gain-preamp": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "gain",
+          "label": "Gain",
+          "kind": "float",
+          "unit": "dB",
+          "min": -24,
+          "max": 24,
+          "step": 0.1,
+          "default": 0
+        }
+      ],
+      "audition": "gain",
+      "exports": {
+        "equalizerApo": "Preamp: {gain} dB"
+      },
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "gain-preamp",
+      "name": "Gain / preamp",
+      "category": "utility-routing",
+      "summary": "Input level staging before processing.",
+      "plainMeaning": "Input level staging before processing.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "waveform"
+    },
+    "pan": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "pan",
+          "label": "Pan",
+          "kind": "float",
+          "unit": "",
+          "min": -100,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        }
+      ],
+      "audition": "pan",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "pan",
+      "name": "Pan",
+      "category": "utility-routing",
+      "summary": "Place a mono-compatible signal in the stereo field.",
+      "plainMeaning": "Place a mono-compatible signal in the stereo field.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "waveform"
+    },
+    "balance": {
+      "aliases": [],
+      "stub": false,
+      "parameters": [
+        {
+          "id": "balance",
+          "label": "Balance",
+          "kind": "float",
+          "unit": "",
+          "min": -100,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        }
+      ],
+      "audition": "pan",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "balance",
+      "name": "Balance",
+      "category": "utility-routing",
+      "summary": "Left/right level balance for a stereo source.",
+      "plainMeaning": "Left/right level balance for a stereo source.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "waveform"
+    },
+    "mute-solo": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "mute-solo",
+      "name": "Mute / solo",
+      "category": "utility-routing",
+      "summary": "Silence a channel or isolate it for listening.",
+      "plainMeaning": "Silence a channel or isolate it for listening.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "bus-aux": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "bus-aux",
+      "name": "Bus / aux / send / return",
+      "category": "utility-routing",
+      "summary": "Routing paths for grouping and shared effects.",
+      "plainMeaning": "Routing paths for grouping and shared effects.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "insert": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "insert",
+      "name": "Insert",
+      "category": "utility-routing",
+      "summary": "Processor placed directly in a channel’s signal path.",
+      "plainMeaning": "Processor placed directly in a channel’s signal path.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "phase-invert": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "phase-invert",
+      "name": "Phase invert (polarity)",
+      "category": "utility-routing",
+      "summary": "Flip waveform polarity—fixes cancellation with miswired mics.",
+      "plainMeaning": "Flip waveform polarity—fixes cancellation with miswired mics.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "mono-sum": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "mono-sum",
+      "name": "Mono sum",
+      "category": "utility-routing",
+      "summary": "Combine L+R to mono to check compatibility.",
+      "plainMeaning": "Combine L+R to mono to check compatibility.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "stereo-width": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "stereo-width",
+      "name": "Stereo width",
+      "category": "utility-routing",
+      "summary": "Narrow or widen the stereo image.",
+      "plainMeaning": "Narrow or widen the stereo image.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "mid-side": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "mid-side",
+      "name": "Mid / Side (M/S)",
+      "category": "utility-routing",
+      "summary": "Encode stereo as center (mid) + difference (side).",
+      "plainMeaning": "Encode stereo as center (mid) + difference (side).",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "dither": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "dither",
+      "name": "Dither",
+      "category": "utility-routing",
+      "summary": "Low-level noise when reducing bit depth to hide quantization.",
+      "plainMeaning": "Low-level noise when reducing bit depth to hide quantization.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "sample-rate": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "sample-rate",
+      "name": "Sample rate",
+      "category": "utility-routing",
+      "summary": "How many amplitude snapshots per second (e.g. 48 kHz).",
+      "plainMeaning": "How many amplitude snapshots per second (e.g. 48 kHz).",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "bit-depth": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "bit-depth",
+      "name": "Bit depth",
+      "category": "utility-routing",
+      "summary": "Amplitude resolution per sample (e.g. 24-bit).",
+      "plainMeaning": "Amplitude resolution per sample (e.g. 24-bit).",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "latency": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "latency",
+      "name": "Latency",
+      "category": "utility-routing",
+      "summary": "Delay through the digital path (buffer + plugins).",
+      "plainMeaning": "Delay through the digital path (buffer + plugins).",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "buffering": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Pan (mono placement) vs balance (stereo lean).",
+      "whenToUse": "Gain staging, routing, and format decisions.",
+      "id": "buffering",
+      "name": "Buffering",
+      "category": "utility-routing",
+      "summary": "Block size trade-off between CPU stability and latency.",
+      "plainMeaning": "Block size trade-off between CPU stability and latency.",
+      "history": "Console topology and digital audio fundamentals; names stuck as DAWs mirrored desks.",
+      "viz": "conceptual"
+    },
+    "peak": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "peak",
+      "name": "Peak",
+      "category": "metering",
+      "summary": "Instantaneous maximum sample/level reading.",
+      "plainMeaning": "Instantaneous maximum sample/level reading.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "rms": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "rms",
+      "name": "RMS",
+      "category": "metering",
+      "summary": "Averaged power-like level—closer to perceived loudness than peak.",
+      "plainMeaning": "Averaged power-like level—closer to perceived loudness than peak.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "lufs": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "lufs",
+      "name": "LUFS / LKFS",
+      "category": "metering",
+      "summary": "Broadcast loudness units (ITU-R BS.1770 family).",
+      "plainMeaning": "Broadcast loudness units (ITU-R BS.1770 family).",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "true-peak": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "true-peak",
+      "name": "True peak",
+      "category": "metering",
+      "summary": "Inter-sample peak estimate after reconstruction.",
+      "plainMeaning": "Inter-sample peak estimate after reconstruction.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "spectrum": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "spectrum",
+      "name": "Spectrum analyzer",
+      "category": "metering",
+      "summary": "Level vs frequency display.",
+      "plainMeaning": "Level vs frequency display.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "spectrum"
+    },
+    "spectrogram": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "spectrogram",
+      "name": "Spectrogram",
+      "category": "metering",
+      "summary": "Frequency vs time intensity plot.",
+      "plainMeaning": "Frequency vs time intensity plot.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "spectrum"
+    },
+    "correlation": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "correlation",
+      "name": "Stereo correlation",
+      "category": "metering",
+      "summary": "How similar L and R are (−1 to +1).",
+      "plainMeaning": "How similar L and R are (−1 to +1).",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "crest-factor": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "Peak ≠ loudness; LUFS is for program loudness.",
+      "whenToUse": "Judging levels, loudness compliance, and phase.",
+      "id": "crest-factor",
+      "name": "Crest factor",
+      "category": "metering",
+      "summary": "Ratio of peak to RMS—transient density clue.",
+      "plainMeaning": "Ratio of peak to RMS—transient density clue.",
+      "history": "Metering evolved from mechanical VU/PPM to digital sample meters and loudness standards.",
+      "viz": "conceptual"
+    },
+    "noise-suppression": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {
+        "obs": {
+          "filter": "noise_suppress_filter"
+        }
+      },
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "noise-suppression",
+      "name": "Noise suppression",
+      "category": "broadcast-live",
+      "summary": "Estimate and reduce stationary or learned noise.",
+      "plainMeaning": "Estimate and reduce stationary or learned noise.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "noise-gate-live": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {
+        "obs": {
+          "filter": "noise_gate_filter"
+        }
+      },
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "noise-gate-live",
+      "name": "Noise gate (live/OBS)",
+      "category": "broadcast-live",
+      "summary": "Gate tuned for mics on streams and conferences.",
+      "plainMeaning": "Gate tuned for mics on streams and conferences.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "vst-host": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "vst-host",
+      "name": "VST / plugin host",
+      "category": "broadcast-live",
+      "summary": "Host loads third-party processors in a DAW or wrapper.",
+      "plainMeaning": "Host loads third-party processors in a DAW or wrapper.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "apo": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "apo",
+      "name": "APO (Audio Processing Object)",
+      "category": "broadcast-live",
+      "summary": "Windows user-mode audio effect injected in the shared audio engine—Equalizer APO’s niche.",
+      "plainMeaning": "Windows user-mode audio effect injected in the shared audio engine—Equalizer APO’s niche.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "loudness-norm": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "loudness-norm",
+      "name": "Loudness normalization",
+      "category": "broadcast-live",
+      "summary": "Adjust gain to a target LUFS for platforms/broadcast.",
+      "plainMeaning": "Adjust gain to a target LUFS for platforms/broadcast.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "duck-under-voice": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "duck-under-voice",
+      "name": "Duck under voice",
+      "category": "broadcast-live",
+      "summary": "Practical ducking of music/beds under speech for streams.",
+      "plainMeaning": "Practical ducking of music/beds under speech for streams.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    },
+    "monitor-vs-program": {
+      "aliases": [],
+      "stub": true,
+      "parameters": [],
+      "audition": "none",
+      "exports": {},
+      "commonConfusion": "APO is not a VST host; OBS filters are per-source, not system-wide.",
+      "whenToUse": "Streaming, podcasts, and system-wide Windows processing.",
+      "id": "monitor-vs-program",
+      "name": "Monitor vs program",
+      "category": "broadcast-live",
+      "summary": "Cue/headphone mix vs what the audience hears.",
+      "plainMeaning": "Cue/headphone mix vs what the audience hears.",
+      "history": "Live sound, broadcast engineering, and streaming tools reused studio vocabulary with platform-specific filters.",
+      "viz": "conceptual"
+    }
+  },
+  "samples": [
+    {
+      "id": "tone-sweep-cc0",
+      "title": "Generated tone + noise bed (CC0)",
+      "license": "CC0-1.0",
+      "source": "audio-lexicon",
+      "path": "samples/curated/tone-bed.wav",
+      "attribution": "Generated by audio-lexicon scripts (CC0).",
+      "curated": true
+    },
+    {
+      "id": "ia-search-hint",
+      "title": "Internet Archive — search more CC music",
+      "license": "varies (check item)",
+      "source": "Internet Archive",
+      "path": "",
+      "attribution": "Use in-app browser; only download items with clear CC0/CC-BY licenses.",
+      "downloadUrl": "https://archive.org/search?query=subject%3A%22cc0%22%20AND%20mediatype%3Aaudio",
+      "curated": false
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+= Initial monorepo
+
+Scaffold HCI-Nerdz *audio-lexicon*: shared pro-audio catalog, TypeScript core + Vite reference UI, native adapter shells (D/GtkD, C++/Qt, C++/ImGui, Rust iced/egui, OBS dock), catalog schema validation, and royalty-free sample tooling.

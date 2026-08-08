@@ -1,0 +1,15 @@
+= D + GtkD adapter
+
+Loads `catalog/lexicon.json`, shows the term tree, detail panes, parameter controls, and EqualizerAPO/OBS export text.
+
+== Build
+
+Requires GTK 3 development libraries and link:https://gtkd.org/[GtkD].
+
+[source,shell]
+----
+dub build --build=release
+dub run
+----
+
+Set `AUDIO_LEXICON_CATALOG` to override the catalog path (defaults to `../../catalog/lexicon.json` from the adapter cwd).

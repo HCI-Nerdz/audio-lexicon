@@ -1,0 +1,16 @@
+= C++ / Qt 6 adapter (EqualizerAPO-aligned)
+
+Same stack family as Equalizer APO’s Configuration Editor: **C++ and Qt Widgets**.
+
+Loads `catalog/lexicon.json`, left term tree, explanation/history, parameter sliders, export pane, About dialog.
+
+== Build
+
+[source,shell]
+----
+cmake -S . -B build -DCMAKE_PREFIX_PATH=<Qt6>
+cmake --build build
+./build/audio-lexicon-qt
+----
+
+Environment: `AUDIO_LEXICON_CATALOG` overrides catalog path.

@@ -1,0 +1,11 @@
+{
+	"name": "audio-lexicon-gtkd",
+	"description": "HCI Nerdz audio-lexicon — D + GtkD adapter",
+	"authors": ["HCI Nerdz"],
+	"license": "MIT",
+	"targetType": "executable",
+	"dependencies": {
+		"gtk-d": "~>3.10.0"
+	},
+	"versions": ["HasGtk"]
+}

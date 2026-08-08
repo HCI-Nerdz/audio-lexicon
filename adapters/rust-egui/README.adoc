@@ -1,0 +1,8 @@
+= Rust + egui adapter
+
+Second Rust GUI (immediate mode via eframe/egui).
+
+[source,shell]
+----
+cargo run --release
+----

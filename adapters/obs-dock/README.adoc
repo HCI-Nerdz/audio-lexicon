@@ -1,0 +1,19 @@
+= OBS dock adapter (out-of-tree)
+
+IMPORTANT: This plugin is developed for HCI Nerdz / personal use.
+**Do not submit it to the OBS Project upstream.** The author is not contributing patches to OBS.
+
+Adds a Qt dock that loads `catalog/lexicon.json` and explains filter / processing terms with export snippets.
+v1 does not process the live program stream.
+
+== Build
+
+Based on the OBS plugin template layout (CMake + Qt6 + frontend API).
+
+[source,shell]
+----
+cmake --preset windows-x64
+cmake --build build_x64 --config RelWithDebInfo
+----
+
+See `src/plugin-main.cpp` and `src/lexicon-dock.cpp`.

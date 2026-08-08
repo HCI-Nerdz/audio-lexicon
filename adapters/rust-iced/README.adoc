@@ -1,0 +1,10 @@
+= Rust + iced adapter
+
+Primary Rust GUI port. Loads the shared catalog and presents tree / detail / export.
+
+[source,shell]
+----
+cargo run --release
+----
+
+`AUDIO_LEXICON_CATALOG` overrides the catalog path.

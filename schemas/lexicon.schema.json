@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hci-nerdz.github.io/audio-lexicon/schemas/lexicon.schema.json",
+  "title": "AudioLexicon",
+  "type": "object",
+  "required": ["version", "tree", "terms", "samples"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string" },
+    "tree": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/treeNode" }
+    },
+    "terms": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/term" }
+    },
+    "samples": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sample" }
+    }
+  },
+  "$defs": {
+    "treeNode": {
+      "type": "object",
+      "required": ["id", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "termId": { "type": "string" },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/treeNode" }
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["id", "label", "kind", "default"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "kind": { "type": "string", "enum": ["float", "int", "bool", "enum"] },
+        "unit": { "type": "string" },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": { "type": "number" },
+        "default": {},
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["value", "label"],
+            "properties": {
+              "value": {},
+              "label": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "term": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "category",
+        "summary",
+        "plainMeaning",
+        "history",
+        "whenToUse",
+        "commonConfusion",
+        "viz",
+        "parameters",
+        "audition",
+        "exports"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "category": { "type": "string" },
+        "summary": { "type": "string" },
+        "plainMeaning": { "type": "string" },
+        "history": { "type": "string" },
+        "whenToUse": { "type": "string" },
+        "commonConfusion": { "type": "string" },
+        "stub": { "type": "boolean" },
+        "viz": {
+          "type": "string",
+          "enum": ["freq-response", "envelope", "waveform", "spectrum", "conceptual", "stereo"]
+        },
+        "parameters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/parameter" }
+        },
+        "audition": {
+          "type": "string",
+          "enum": [
+            "none",
+            "biquad-peaking",
+            "biquad-lowshelf",
+            "biquad-highshelf",
+            "biquad-lowpass",
+            "biquad-highpass",
+            "biquad-notch",
+            "biquad-bandpass",
+            "biquad-allpass",
+            "gain",
+            "delay",
+            "compressor",
+            "ducking",
+            "gate",
+            "tremolo",
+            "pan"
+          ]
+        },
+        "exports": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "equalizerApo": { "type": "string" },
+            "obs": { "type": "object", "additionalProperties": true }
+          }
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "required": ["id", "title", "license", "source", "path", "attribution"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "license": { "type": "string" },
+        "source": { "type": "string" },
+        "path": { "type": "string" },
+        "attribution": { "type": "string" },
+        "downloadUrl": { "type": "string" },
+        "curated": { "type": "boolean" }
+      }
+    }
+  }
+}

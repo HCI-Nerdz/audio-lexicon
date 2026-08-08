@@ -1,0 +1,74 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  catalog-and-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install
+      - run: node scripts/build-catalog.mjs
+      - run: pnpm validate:catalog
+      - run: node scripts/generate-tone-sample.mjs
+      - run: node scripts/sync-web-data.mjs
+      - run: pnpm check
+      - run: pnpm --filter @hci-nerdz/audio-lexicon-web build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: adapters/web/dist
+
+  rust:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        crate: [rust-iced, rust-egui]
+    defaults:
+      run:
+        working-directory: adapters/${{ matrix.crate }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install Linux deps
+        run: sudo apt-get update && sudo apt-get install -y libasound2-dev libgtk-3-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+      - run: cargo check
+
+  pages:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: catalog-and-web
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install
+      - run: node scripts/build-catalog.mjs && node scripts/generate-tone-sample.mjs && node scripts/sync-web-data.mjs
+      - run: pnpm --filter @hci-nerdz/audio-lexicon-web build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: adapters/web/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

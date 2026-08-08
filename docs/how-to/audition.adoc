@@ -1,0 +1,7 @@
+= How to: Audition a term
+
+. Open the web demo (`pnpm dev`) or a native adapter.
+. Pick a term in the left tree.
+. Press *Play* with the curated CC0 bed (or another licensed sample).
+. Toggle *Effect / Bypassed* to A/B.
+. Adjust controls; watch the visualization and export pane.

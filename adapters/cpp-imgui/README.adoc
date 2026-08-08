@@ -1,0 +1,14 @@
+= C++ / Dear ImGui adapter
+
+Immediate-mode shell over the shared catalog. GLFW + Dear ImGui.
+
+== Build
+
+Place Dear ImGui and GLFW via your preferred package manager, or drop sources under `third_party/`.
+
+[source,shell]
+----
+cmake -S . -B build
+cmake --build build
+./build/audio-lexicon-imgui
+----

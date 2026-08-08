@@ -1,0 +1,4 @@
+= Explanation: Audio literacy UI
+
+Professional hosts expose filters and routing jargon without teaching what the words meant historically or how they sound.
+*audio-lexicon* is an HCI Nerdz pattern: one shared catalog, many thin toolkit adapters, audition + export—not a DAW.
