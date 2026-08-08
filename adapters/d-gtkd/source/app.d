@@ -186,12 +186,24 @@ class LexiconApp : MainWindow
         selectedId = id;
         auto term = lex["terms"][id];
         titleLbl.setText(term["name"].str);
-        detail.getBuffer().setText(
+        string body =
             "Summary: " ~ term["summary"].str ~ "\n\n" ~
             "Meaning: " ~ term["plainMeaning"].str ~ "\n\n" ~
             "History: " ~ term["history"].str ~ "\n\n" ~
             "When: " ~ term["whenToUse"].str ~ "\n\n" ~
-            "Confusion: " ~ term["commonConfusion"].str);
+            "Confusion: " ~ term["commonConfusion"].str;
+        if ("relatedLinks" in term && term["relatedLinks"].type == JSONType.array)
+        {
+            body ~= "\n\nRelated projects:\n";
+            foreach (link; term["relatedLinks"].array)
+            {
+                body ~= "- " ~ link["label"].str ~ " — " ~ link["url"].str;
+                if ("blurb" in link)
+                    body ~= "\n  " ~ link["blurb"].str;
+                body ~= "\n";
+            }
+        }
+        detail.getBuffer().setText(body);
 
         foreach (c; controlsBox.getChildren())
             controlsBox.remove(c);

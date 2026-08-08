@@ -438,6 +438,28 @@
       "summary": "Pro apps bury filters behind jargon. This UI teaches what each setting means — history, sound, and controls — before you trust a knob.",
       "plainMeaning": "Equalizers, ducking, sidechain, Q, shelves — the words arrived from radio, consoles, and speakers. Most UIs assume you already speak that dialect. audio-lexicon puts a searchable term tree beside plain-language meaning, original usage, a live curve or envelope, and A/B audition on royalty-free audio.",
       "history": "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; honesty when it does not.",
+      "relatedLinks": [
+        {
+          "label": "Equalizer APO",
+          "url": "https://sourceforge.net/projects/equalizerapo/",
+          "blurb": "System-wide parametric / graphic EQ for Windows — the primary export target for many terms here."
+        },
+        {
+          "label": "Peace Equalizer",
+          "url": "https://sourceforge.net/projects/peace-equalizer-apo-extension/",
+          "blurb": "Popular GUI front-end that configures Equalizer APO without hand-editing config files."
+        },
+        {
+          "label": "Room EQ Wizard",
+          "url": "https://www.roomeqwizard.com/",
+          "blurb": "Measurement and filter-generation tool; Equalizer APO can import its filter text format."
+        },
+        {
+          "label": "Easy Effects",
+          "url": "https://github.com/wwmm/easyeffects",
+          "blurb": "PipeWire system effects on Linux — a useful literacy peer when you are not on Windows APO."
+        }
+      ],
       "viz": "freq-response"
     },
     "peaking-eq": {

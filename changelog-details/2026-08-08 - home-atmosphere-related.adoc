@@ -1,0 +1,3 @@
+= Home atmosphere + related projects
+
+Home Atmosphere was drawing a flat 0 dB response for `audition: none`, which sat on the center guide and looked blank. Restored the animated peaking-curve / envelope atmosphere. Catalog Home now includes `relatedLinks` (Equalizer APO, Peace, Room EQ Wizard, Easy Effects) shown across adapters; OBS intentionally omitted.

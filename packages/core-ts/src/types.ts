@@ -50,6 +50,12 @@ export interface TermExports {
   obs?: Record<string, unknown>;
 }
 
+export interface RelatedLink {
+  label: string;
+  url: string;
+  blurb?: string;
+}
+
 export interface Term {
   id: string;
   name: string;
@@ -61,6 +67,8 @@ export interface Term {
   whenToUse: string;
   commonConfusion: string;
   stub?: boolean;
+  /** Optional outbound references (used on Home and similar orientation pages). */
+  relatedLinks?: RelatedLink[];
   viz: VizKind;
   parameters: ParameterDef[];
   audition: AuditionKind;

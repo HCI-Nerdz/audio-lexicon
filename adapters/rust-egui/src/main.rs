@@ -21,6 +21,13 @@ struct TreeNode {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+struct RelatedLink {
+    label: String,
+    url: String,
+    blurb: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
 struct Term {
     id: Option<String>,
     name: String,
@@ -32,6 +39,8 @@ struct Term {
     when_to_use: String,
     #[serde(rename = "commonConfusion")]
     common_confusion: String,
+    #[serde(default, rename = "relatedLinks")]
+    related_links: Vec<RelatedLink>,
     exports: Exports,
 }
 
@@ -138,6 +147,15 @@ impl eframe::App for App {
                     ui.label(format!("{}: {}", if is_home { "Not" } else { "Confusion" }, t.common_confusion));
                     ui.separator();
                     if is_home {
+                        ui.heading("Related projects");
+                        for link in &t.related_links {
+                            ui.hyperlink_to(&link.label, &link.url);
+                            if let Some(blurb) = &link.blurb {
+                                ui.label(blurb);
+                            }
+                            ui.add_space(4.0);
+                        }
+                        ui.separator();
                         ui.heading("Links");
                         ui.hyperlink("https://github.com/HCI-Nerdz/audio-lexicon");
                     } else {

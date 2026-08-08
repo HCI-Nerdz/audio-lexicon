@@ -1,4 +1,4 @@
-import type { Lexicon, ParamValues, Term, TreeNode } from "@hci-nerdz/core-ts";
+import type { Lexicon, ParamValues, RelatedLink, Term, TreeNode } from "@hci-nerdz/core-ts";
 import { exportBundle, filterTree, isHomeTerm, responseForAudition } from "@hci-nerdz/core-ts";
 import versionJson from "../data/version.json";
 
@@ -17,12 +17,95 @@ export interface UiState {
   status: string;
 }
 
+let homeAtmosphereRaf = 0;
+
+export function stopHomeAtmosphere() {
+  if (homeAtmosphereRaf) cancelAnimationFrame(homeAtmosphereRaf);
+  homeAtmosphereRaf = 0;
+}
+
+function paintHomeAtmosphere(canvas: HTMLCanvasElement) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+  if (w < 2 || h < 2) return;
+  canvas.width = Math.floor(w * dpr);
+  canvas.height = Math.floor(h * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  const t = performance.now() / 1000;
+  ctx.strokeStyle = "rgba(15,107,92,0.22)";
+  ctx.beginPath();
+  ctx.moveTo(0, h * 0.58);
+  ctx.lineTo(w, h * 0.58);
+  ctx.stroke();
+
+  ctx.lineWidth = 2.25;
+  ctx.strokeStyle = "rgba(15, 107, 92, 0.7)";
+  ctx.beginPath();
+  for (let x = 0; x <= w; x++) {
+    const u = x / w;
+    const hz = Math.exp(Math.log(20) + u * (Math.log(20000) - Math.log(20)));
+    const center = 800 + Math.sin(t * 0.35) * 180;
+    const gain = 7 + Math.sin(t * 0.55) * 2;
+    const q = 1.2 + Math.sin(t * 0.25) * 0.35;
+    const oct = Math.log2(hz / center);
+    const db = gain / (1 + (oct * oct) / (0.45 / q));
+    const y = h * 0.58 - (db / 24) * h * 0.42;
+    if (x === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  ctx.strokeStyle = "rgba(196, 92, 38, 0.35)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let x = 0; x <= w; x++) {
+    const u = x / w;
+    const y =
+      h * 0.78 +
+      Math.sin(u * Math.PI * 6 + t * 1.2) * 14 * Math.sin(u * Math.PI) +
+      Math.sin(u * Math.PI * 14 + t * 2.1) * 5;
+    if (x === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+}
+
+function startHomeAtmosphere(canvas: HTMLCanvasElement) {
+  stopHomeAtmosphere();
+  const loop = () => {
+    paintHomeAtmosphere(canvas);
+    homeAtmosphereRaf = requestAnimationFrame(loop);
+  };
+  loop();
+}
+
 function escapeHtml(s: string): string {
   return s
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function renderRelatedLinks(links: RelatedLink[] | undefined): string {
+  if (!links?.length) return "";
+  return `<div class="section"><h2>Related projects</h2>
+    <ul class="related-links">
+      ${links
+        .map(
+          (l) => `<li>
+            <a href="${escapeHtml(l.url)}" target="_blank" rel="noreferrer">${escapeHtml(l.label)}</a>
+            ${l.blurb ? `<span class="meta">${escapeHtml(l.blurb)}</span>` : ""}
+          </li>`,
+        )
+        .join("")}
+    </ul>
+  </div>`;
 }
 
 function renderTree(nodes: TreeNode[], selectedId: string): string {
@@ -148,6 +231,8 @@ function renderHomePage(term: Term): string {
     <div class="section"><h2>How to use it</h2><p>${escapeHtml(term.whenToUse)}</p></div>
     <div class="section"><h2>What it is not</h2><p>${escapeHtml(term.commonConfusion)}</p></div>
 
+    ${renderRelatedLinks(term.relatedLinks)}
+
     <div class="section"><h2>Atmosphere</h2>
       <div class="viz-wrap home-viz"><canvas data-viz></canvas></div>
     </div>
@@ -259,6 +344,7 @@ function renderTermPage(
 }
 
 export function render(root: HTMLElement, state: UiState) {
+  stopHomeAtmosphere();
   const term = state.lex.terms[state.selectedId];
   const tree = filterTree(state.lex.tree, state.query, state.lex.terms);
   const bundle = term ? exportBundle(term, state.values) : null;
@@ -287,7 +373,10 @@ export function render(root: HTMLElement, state: UiState) {
   `;
 
   const canvas = root.querySelector<HTMLCanvasElement>("[data-viz]");
-  if (canvas && term) drawViz(canvas, term, state.values);
+  if (canvas && term) {
+    if (home) startHomeAtmosphere(canvas);
+    else drawViz(canvas, term, state.values);
+  }
 }
 
 /** Update viz / export / value labels without replacing the DOM (keeps range drag alive). */

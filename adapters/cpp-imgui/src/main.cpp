@@ -130,7 +130,14 @@ int main() {
       ImGui::TextWrapped("%s: %s", home ? "How" : "When", t.when.c_str());
       ImGui::Spacing();
       ImGui::TextWrapped("%s: %s", home ? "Not" : "Confusion", t.confusion.c_str());
-      if (!home) {
+      if (home) {
+        ImGui::Separator();
+        ImGui::TextUnformatted("Related projects");
+        ImGui::TextWrapped("Equalizer APO — https://sourceforge.net/projects/equalizerapo/");
+        ImGui::TextWrapped("Peace Equalizer — https://sourceforge.net/projects/peace-equalizer-apo-extension/");
+        ImGui::TextWrapped("Room EQ Wizard — https://www.roomeqwizard.com/");
+        ImGui::TextWrapped("Easy Effects — https://github.com/wwmm/easyeffects");
+      } else {
         ImGui::Separator();
         ImGui::TextUnformatted("Export");
         if (t.apo.empty()) ImGui::TextUnformatted("Conceptual only");

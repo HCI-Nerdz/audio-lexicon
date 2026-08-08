@@ -131,13 +131,26 @@ void MainWindow::selectTerm(const QString &id) {
   selectedId_ = id;
   const auto term = terms_.value(id).toObject();
   title_->setText(term.value(QStringLiteral("name")).toString());
-  detail_->setPlainText(
-      QStringLiteral("Summary: %1\n\nMeaning: %2\n\nHistory: %3\n\nWhen: %4\n\nConfusion: %5")
-          .arg(term.value(QStringLiteral("summary")).toString(),
-               term.value(QStringLiteral("plainMeaning")).toString(),
-               term.value(QStringLiteral("history")).toString(),
-               term.value(QStringLiteral("whenToUse")).toString(),
-               term.value(QStringLiteral("commonConfusion")).toString()));
+  QString detail = QStringLiteral("Summary: %1\n\nMeaning: %2\n\nHistory: %3\n\nWhen: %4\n\nConfusion: %5")
+                       .arg(term.value(QStringLiteral("summary")).toString(),
+                            term.value(QStringLiteral("plainMeaning")).toString(),
+                            term.value(QStringLiteral("history")).toString(),
+                            term.value(QStringLiteral("whenToUse")).toString(),
+                            term.value(QStringLiteral("commonConfusion")).toString());
+  const auto related = term.value(QStringLiteral("relatedLinks")).toArray();
+  if (!related.isEmpty()) {
+    detail += QStringLiteral("\n\nRelated projects:\n");
+    for (const auto &linkVal : related) {
+      const auto link = linkVal.toObject();
+      detail += QStringLiteral("- %1 — %2")
+                    .arg(link.value(QStringLiteral("label")).toString(),
+                         link.value(QStringLiteral("url")).toString());
+      const auto blurb = link.value(QStringLiteral("blurb")).toString();
+      if (!blurb.isEmpty()) detail += QStringLiteral("\n  %1").arg(blurb);
+      detail += QLatin1Char('\n');
+    }
+  }
+  detail_->setPlainText(detail);
 
   while (QLayoutItem *child = controls_->takeAt(0)) {
     delete child->widget();

@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-08-08 — Home atmosphere + related projects
+
+* link:changelog-details/2026-08-08%20-%20home-atmosphere-related.adoc[Details]
+
 == 2026-08-08 — Home page inside the lexicon tree
 
 * link:changelog-details/2026-08-08%20-%20home-in-tree.adoc[Details]

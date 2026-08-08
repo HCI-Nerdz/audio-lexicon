@@ -89,6 +89,19 @@
         "whenToUse": { "type": "string" },
         "commonConfusion": { "type": "string" },
         "stub": { "type": "boolean" },
+        "relatedLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "url"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "url": { "type": "string" },
+              "blurb": { "type": "string" }
+            }
+          }
+        },
         "viz": {
           "type": "string",
           "enum": ["freq-response", "envelope", "waveform", "spectrum", "conceptual", "stereo"]

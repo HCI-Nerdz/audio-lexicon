@@ -23,6 +23,13 @@ struct TreeNode {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+struct RelatedLink {
+    label: String,
+    url: String,
+    blurb: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
 struct Term {
     id: String,
     name: String,
@@ -34,6 +41,8 @@ struct Term {
     when_to_use: String,
     #[serde(rename = "commonConfusion")]
     common_confusion: String,
+    #[serde(default, rename = "relatedLinks")]
+    related_links: Vec<RelatedLink>,
     exports: Exports,
 }
 
@@ -140,7 +149,7 @@ impl App {
         let term = self.lexicon.terms.get(&self.selected);
         let detail: Element<'_, Message> = if let Some(t) = term {
             let is_home = t.id == "home";
-            let export = if is_home {
+            let mut export = if is_home {
                 "Project: https://github.com/HCI-Nerdz/audio-lexicon".to_string()
             } else {
                 match (&t.exports.equalizer_apo, &t.exports.obs) {
@@ -152,6 +161,15 @@ impl App {
                             .map(|v| serde_json::to_string_pretty(v).unwrap_or_default())
                             .unwrap_or_default()
                     ),
+                }
+            };
+            if is_home && !t.related_links.is_empty() {
+                export.push_str("\n\nRelated projects:\n");
+                for link in &t.related_links {
+                    export.push_str(&format!("- {} — {}\n", link.label, link.url));
+                    if let Some(blurb) = &link.blurb {
+                        export.push_str(&format!("  {}\n", blurb));
+                    }
                 }
             };
             column![

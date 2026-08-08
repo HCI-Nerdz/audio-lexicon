@@ -71,6 +71,28 @@ add(term({
     "Pick any term in the tree. Read meaning and history, twist controls, Play a curated sample, toggle Effect engaged/bypassed, and copy export snippets when shown. Start from Home anytime to reorient.",
   commonConfusion:
     "This is not a DAW, VST host, or system-wide APO installer — and commercial hits (Skrillex, M.I.A. Paper Planes, etc.) are not bundled. Use the curated CC0/public-domain samples for realistic A/B.",
+  relatedLinks: [
+    {
+      label: "Equalizer APO",
+      url: "https://sourceforge.net/projects/equalizerapo/",
+      blurb: "System-wide parametric / graphic EQ for Windows — the primary export target for many terms here.",
+    },
+    {
+      label: "Peace Equalizer",
+      url: "https://sourceforge.net/projects/peace-equalizer-apo-extension/",
+      blurb: "Popular GUI front-end that configures Equalizer APO without hand-editing config files.",
+    },
+    {
+      label: "Room EQ Wizard",
+      url: "https://www.roomeqwizard.com/",
+      blurb: "Measurement and filter-generation tool; Equalizer APO can import its filter text format.",
+    },
+    {
+      label: "Easy Effects",
+      url: "https://github.com/wwmm/easyeffects",
+      blurb: "PipeWire system effects on Linux — a useful literacy peer when you are not on Windows APO.",
+    },
+  ],
   viz: "freq-response",
   parameters: [],
   audition: "none",
