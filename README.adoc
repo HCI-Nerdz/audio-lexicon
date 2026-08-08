@@ -50,7 +50,7 @@ adapters/obs-dock   out-of-tree OBS Qt dock (do not upstream)
 [source,shell]
 ----
 pnpm install
-pnpm generate:tone
+pnpm prepare:audio
 pnpm validate:catalog
 pnpm dev
 ----

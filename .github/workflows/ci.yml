@@ -21,6 +21,7 @@ jobs:
       - run: node scripts/build-catalog.mjs
       - run: pnpm validate:catalog
       - run: node scripts/generate-tone-sample.mjs
+      - run: node scripts/fetch-curated-music.mjs
       - run: node scripts/sync-web-data.mjs
       - run: pnpm check
       - run: pnpm --filter @hci-nerdz/audio-lexicon-web build
@@ -65,7 +66,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install
-      - run: node scripts/build-catalog.mjs && node scripts/generate-tone-sample.mjs && node scripts/sync-web-data.mjs
+      - run: node scripts/build-catalog.mjs && node scripts/generate-tone-sample.mjs && node scripts/fetch-curated-music.mjs && node scripts/sync-web-data.mjs
       - run: pnpm --filter @hci-nerdz/audio-lexicon-web build
       - uses: actions/upload-pages-artifact@v3
         with:

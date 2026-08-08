@@ -38,3 +38,7 @@ adapters/**/node_modules/
 adapters/**/node_modules/**
 samples/cache/
 samples/cache/**
+samples/curated/*.mp3
+!samples/curated/tone-bed.wav
+!samples/curated/music-manifest.json
+scripts/_probe-samples.mjs

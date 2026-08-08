@@ -1,0 +1,3 @@
+= Curated pop / dubstep / classical audition tracks
+
+Added default CC0/public-domain music for realistic EQ A/B: pop-like AI AM Pop cuts, a kosmik dubstep pack for bass/drops, reggae/dnb vocal material as a Paper Planes–role stand-in, and Musopen Beethoven Symphony No. 5 I. Commercial hits (Skrillex, M.I.A., etc.) remain excluded — `pnpm fetch:curated` + CI fetch into `samples/curated/`.

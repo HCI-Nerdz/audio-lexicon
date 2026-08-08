@@ -1,0 +1,52 @@
+[
+  {
+    "id": "pop-catch-that-wave",
+    "title": "Catch that Wave (pop-like)",
+    "license": "CC0-1.0",
+    "source": "Internet Archive / AI AM Pop",
+    "path": "samples/curated/pop-catch-that-wave.mp3",
+    "attribution": "Catch that Wave — AI AM Pop (Internet Archive ai-am-pop), CC0-1.0",
+    "downloadUrl": "https://archive.org/download/ai-am-pop/Catch%20that%20Wave.mp3",
+    "curated": true
+  },
+  {
+    "id": "pop-lemon-yellow",
+    "title": "Lemon Yellow (bright pop/synth)",
+    "license": "CC0-1.0",
+    "source": "Internet Archive / AI AM Pop",
+    "path": "samples/curated/pop-lemon-yellow.mp3",
+    "attribution": "Lemon Yellow — AI AM Pop (Internet Archive ai-am-pop), CC0-1.0",
+    "downloadUrl": "https://archive.org/download/ai-am-pop/Lemon%20Yellow.mp3",
+    "curated": true
+  },
+  {
+    "id": "dubstep-fyah-kosmik",
+    "title": "FYAH Dubstep (bass / drops)",
+    "license": "CC0-1.0",
+    "source": "Internet Archive / kosmik",
+    "path": "samples/curated/dubstep-fyah-kosmik.mp3",
+    "attribution": "FYAH 2025 DUBSTEP WKD KOSMIK — kosmik (Internet Archive fyah-2025-dubstep-wkd-kosmik), CC0-1.0",
+    "downloadUrl": "https://archive.org/download/fyah-2025-dubstep-wkd-kosmik/FYAH__2025_DUBSTEP_WKD_KOSMIK.mp3",
+    "curated": true
+  },
+  {
+    "id": "reggae-voice-of-jah",
+    "title": "Voice of Jah People (reggae/dnb vocal)",
+    "license": "CC0-1.0",
+    "source": "Internet Archive / kosmik",
+    "path": "samples/curated/reggae-voice-of-jah.mp3",
+    "attribution": "DNB 85 Voice of Jah People — kosmik pack (Internet Archive fyah-2025-dubstep-wkd-kosmik), CC0-1.0",
+    "downloadUrl": "https://archive.org/download/fyah-2025-dubstep-wkd-kosmik/DNB_85_VOICE_OF_JAH_PEOPLE.mp3",
+    "curated": true
+  },
+  {
+    "id": "classical-beethoven-5-i",
+    "title": "Beethoven Symphony No. 5 — I (Musopen)",
+    "license": "Public Domain Mark 1.0 (composition + Musopen performance)",
+    "source": "Internet Archive / Musopen",
+    "path": "samples/curated/classical-beethoven-5-i.mp3",
+    "attribution": "Beethoven Symphony No. 5 in C minor, Op. 67 — I. Allegro con brio — Musopen (Internet Archive SymphonyNo.5), Public Domain",
+    "downloadUrl": "https://archive.org/download/SymphonyNo.5/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor_op._67_-_i._allegro_con_brio.mp3",
+    "curated": true
+  }
+]

@@ -195,7 +195,7 @@ export function render(root: HTMLElement, state: UiState) {
         ${
           state.showSamples
             ? `<div class="panel"><h2 class="section" style="margin:0">Royalty-free samples</h2>
-            <p class="summary">Curated CC0 bed ships offline. Online results show license before you fetch.</p>
+            <p class="summary">Curated CC0 / public-domain music ships for realistic A/B (pop-like, dubstep bass, reggae/dnb vocal, classical). Commercial hits cannot be bundled — license is shown on every track.</p>
             <ul class="sample-list">
               ${samples
                 .map(
