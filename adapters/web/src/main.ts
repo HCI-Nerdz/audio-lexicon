@@ -9,6 +9,7 @@ import {
   type Lexicon,
 } from "@hci-nerdz/core-ts";
 import { paintLive, paintTree, render, type UiState } from "./ui/render.js";
+import { effectiveTheme, initTheme, isThemeOverridden, toggleTheme } from "./theme.js";
 import "./styles.css";
 import versionJson from "./data/version.json";
 
@@ -40,6 +41,11 @@ function syncUrl(termId: string, mode: "push" | "replace" = "push") {
 
 const initialTerm = termFromLocation();
 
+function syncThemeState() {
+  state.theme = effectiveTheme();
+  state.themeSource = isThemeOverridden() ? "manual" : "system";
+}
+
 const state: UiState = {
   lex,
   query: "",
@@ -51,6 +57,8 @@ const state: UiState = {
   showSamples: false,
   showAbout: false,
   status: "Idle",
+  theme: "light",
+  themeSource: "system",
 };
 
 const app = document.querySelector<HTMLElement>("#app")!;
@@ -199,6 +207,12 @@ app.addEventListener("click", async (ev) => {
     paint();
     return;
   }
+  if (action === "theme") {
+    toggleTheme();
+    syncThemeState();
+    paint();
+    return;
+  }
   if (action === "debug-dump") {
     const dump = {
       app: "audio-lexicon",
@@ -272,5 +286,10 @@ window.addEventListener("resize", () => {
   paintLive(app, state);
 });
 
+initTheme(() => {
+  syncThemeState();
+  paint();
+});
+syncThemeState();
 syncUrl(initialTerm, "replace");
 paint();

@@ -8,6 +8,13 @@
       name="description"
       content="Pro-audio filter literacy: plain meaning, history, visualization, and audition — not another wall of unexplained knobs."
     />
+    <script>
+      (() => {
+        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

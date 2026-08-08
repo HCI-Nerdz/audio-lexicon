@@ -1,5 +1,13 @@
 = Changelog
 
+== 2026-08-08 — Light/dark theme toggle
+
+* link:changelog-details/2026-08-08%20-%20theme-toggle.adoc[Details]
+
+== 2026-08-08 — README Best-README layout
+
+* link:changelog-details/2026-08-08%20-%20readme-layout.adoc[Details]
+
 == 2026-08-08 — Term URL routing + live sample swap
 
 * link:changelog-details/2026-08-08%20-%20term-url-sample-swap.adoc[Details]

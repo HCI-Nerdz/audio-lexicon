@@ -15,6 +15,23 @@ export interface UiState {
   showSamples: boolean;
   showAbout: boolean;
   status: string;
+  theme: "light" | "dark";
+  themeSource: "system" | "manual";
+}
+
+function themeToggleButton(state: UiState): string {
+  const dark = state.theme === "dark";
+  const label = dark
+    ? state.themeSource === "system"
+      ? "Switch to light mode (currently dark from system)"
+      : "Switch to light mode"
+    : state.themeSource === "system"
+      ? "Switch to dark mode (currently light from system)"
+      : "Switch to dark mode";
+  const icon = dark
+    ? `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1Zm0 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.5-2.5a1 1 0 1 1 0-2H21a1 1 0 1 1 0 2h-1.5ZM3 12a1 1 0 0 1 1-1h1.5a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm14.95 5.45a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0ZM7.52 6.08a1 1 0 0 1 0 1.41L6.46 8.55A1 1 0 0 1 5.05 7.14L6.1 6.08a1 1 0 0 1 1.42 0Zm9.9-1.41 1.06 1.06a1 1 0 1 1-1.41 1.41L16 6.08a1 1 0 0 1 1.41-1.41ZM6.46 15.45l1.06 1.06a1 1 0 0 1-1.41 1.41L5.05 16.86a1 1 0 1 1 1.41-1.41ZM12 17a1 1 0 0 1 1 1v1.5a1 1 0 1 1-2 0V18a1 1 0 0 1 1-1Z"/></svg>`
+    : `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.5 13.3A7.5 7.5 0 0 1 10.7 4.5a.75.75 0 0 0-.95-.95 9 9 0 1 0 10.7 10.7.75.75 0 0 0-.95-.95Z"/></svg>`;
+  return `<button type="button" class="theme-toggle" data-action="theme" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${icon}</button>`;
 }
 
 let homeAtmosphereRaf = 0;
@@ -36,15 +53,22 @@ function paintHomeAtmosphere(canvas: HTMLCanvasElement) {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, w, h);
 
+  const styles = getComputedStyle(document.documentElement);
+  const accent = styles.getPropertyValue("--accent").trim() || "#0f6b5c";
+  const accent2 = styles.getPropertyValue("--accent-2").trim() || "#c45c26";
+
   const t = performance.now() / 1000;
-  ctx.strokeStyle = "rgba(15,107,92,0.22)";
+  ctx.strokeStyle = accent;
+  ctx.globalAlpha = 0.22;
   ctx.beginPath();
   ctx.moveTo(0, h * 0.58);
   ctx.lineTo(w, h * 0.58);
   ctx.stroke();
+  ctx.globalAlpha = 1;
 
   ctx.lineWidth = 2.25;
-  ctx.strokeStyle = "rgba(15, 107, 92, 0.7)";
+  ctx.strokeStyle = accent;
+  ctx.globalAlpha = 0.75;
   ctx.beginPath();
   for (let x = 0; x <= w; x++) {
     const u = x / w;
@@ -59,8 +83,10 @@ function paintHomeAtmosphere(canvas: HTMLCanvasElement) {
     else ctx.lineTo(x, y);
   }
   ctx.stroke();
+  ctx.globalAlpha = 1;
 
-  ctx.strokeStyle = "rgba(196, 92, 38, 0.35)";
+  ctx.strokeStyle = accent2;
+  ctx.globalAlpha = 0.4;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   for (let x = 0; x <= w; x++) {
@@ -73,6 +99,7 @@ function paintHomeAtmosphere(canvas: HTMLCanvasElement) {
     else ctx.lineTo(x, y);
   }
   ctx.stroke();
+  ctx.globalAlpha = 1;
 }
 
 function startHomeAtmosphere(canvas: HTMLCanvasElement) {
@@ -176,21 +203,26 @@ export function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValu
   canvas.height = Math.floor(h * dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, w, h);
-  ctx.strokeStyle = "rgba(15,107,92,0.25)";
+  const styles = getComputedStyle(document.documentElement);
+  const viz = styles.getPropertyValue("--viz").trim() || "#0f6b5c";
+  const muted = styles.getPropertyValue("--muted").trim() || "#4a5a52";
+  ctx.strokeStyle = viz;
+  ctx.globalAlpha = 0.25;
   ctx.beginPath();
   ctx.moveTo(0, h / 2);
   ctx.lineTo(w, h / 2);
   ctx.stroke();
+  ctx.globalAlpha = 1;
 
   if (term.viz === "conceptual") {
-    ctx.fillStyle = "#4a5a52";
+    ctx.fillStyle = muted;
     ctx.font = "14px IBM Plex Sans, sans-serif";
     ctx.fillText("Conceptual term — no frequency curve", 8, h / 2 - 8);
     return;
   }
 
   if (term.viz === "envelope" || term.viz === "waveform") {
-    ctx.strokeStyle = "#0f6b5c";
+    ctx.strokeStyle = viz;
     ctx.lineWidth = 2;
     ctx.beginPath();
     for (let x = 0; x < w; x++) {
@@ -223,7 +255,7 @@ export function drawViz(canvas: HTMLCanvasElement, term: Term, values: ParamValu
   const points = responseForAudition(term.audition, values as Record<string, number | boolean | string>);
   const minDb = -24;
   const maxDb = 24;
-  ctx.strokeStyle = "#0f6b5c";
+  ctx.strokeStyle = viz;
   ctx.lineWidth = 2;
   ctx.beginPath();
   points.forEach((p, i) => {
@@ -404,9 +436,12 @@ export function render(root: HTMLElement, state: UiState) {
 
   root.innerHTML = `
     <aside class="sidebar">
-      <div>
-        <p class="eyebrow"><a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Lexicon</p>
-        <h1>audio-lexicon</h1>
+      <div class="sidebar-head">
+        <div>
+          <p class="eyebrow"><a href="https://hci-nerdz.github.io/" target="_blank" rel="noreferrer">HCI Nerdz</a> · Lexicon</p>
+          <h1>audio-lexicon</h1>
+        </div>
+        ${themeToggleButton(state)}
       </div>
       <input class="search" type="search" placeholder="Search terms…" value="${escapeHtml(state.query)}" data-action="search" />
       <div class="tree">${renderTree(tree, state.selectedId)}</div>

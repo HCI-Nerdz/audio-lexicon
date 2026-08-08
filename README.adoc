@@ -3,17 +3,48 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/graphs/contributors"><img src="https://img.shields.io/github/contributors/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/network/members"><img src="https://img.shields.io/github/forks/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/stargazers"><img src="https://img.shields.io/github/stars/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/issues"><img src="https://img.shields.io/github/issues/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/blob/main/LICENSE"><img src="https://img.shields.io/github/license/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge" alt="License"></a>
+<br />
+<h3 align="center">audio-lexicon</h3>
+<p align="center">
+Pro-audio filter and processing literacy UI — shared catalog with multi-toolkit adapters.<br />
+<a href="https://hci-nerdz.github.io/docs/"><strong>Explore the docs »</strong></a><br /><br />
+<a href="https://hci-nerdz.github.io/audio-lexicon/">View Demo</a>
+&middot;
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/issues">Report Bug</a>
+&middot;
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/issues">Request Feature</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge[Contributors,link=https://github.com/HCI-Nerdz/audio-lexicon/graphs/contributors]
+image:https://img.shields.io/github/forks/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge[Forks,link=https://github.com/HCI-Nerdz/audio-lexicon/network/members]
+image:https://img.shields.io/github/stars/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge[Stars,link=https://github.com/HCI-Nerdz/audio-lexicon/stargazers]
+image:https://img.shields.io/github/issues/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge[Issues,link=https://github.com/HCI-Nerdz/audio-lexicon/issues]
+image:https://img.shields.io/github/license/HCI-Nerdz/audio-lexicon.svg?style=for-the-badge[License,link=https://github.com/HCI-Nerdz/audio-lexicon/blob/main/LICENSE]
+
 = audio-lexicon
 
 Pro-audio filter and processing literacy UI — shared catalog with multi-toolkit adapters.
 
-link:https://hci-nerdz.github.io/audio-lexicon/[Open the lexicon]
-·
-link:https://github.com/HCI-Nerdz/audio-lexicon/issues[Report Bug]
+link:https://hci-nerdz.github.io/docs/[Explore the docs] ·
+link:https://hci-nerdz.github.io/audio-lexicon/[View Demo] ·
+link:https://github.com/HCI-Nerdz/audio-lexicon/issues[Report Bug] ·
+link:https://github.com/HCI-Nerdz/audio-lexicon/issues[Request Feature]
+endif::[]
 
-Part of link:https://github.com/HCI-Nerdz[HCI Nerdz].
-
-== About
+== About The Project
 
 Professional audio apps expose filters and routing terms that mean little without history and audition.
 *audio-lexicon* puts a searchable term tree on the left and, for each term:
@@ -26,8 +57,9 @@ Professional audio apps expose filters and routing terms that mean little withou
 * EqualizerAPO / OBS export snippets when mappable
 
 Not a system-wide APO host and not an OBS upstream contribution.
+Part of link:https://github.com/HCI-Nerdz[HCI Nerdz].
 
-== Architecture
+=== Architecture
 
 [source]
 ----
@@ -43,7 +75,42 @@ adapters/rust-egui  Rust + egui
 adapters/obs-dock   out-of-tree OBS Qt dock (do not upstream)
 ----
 
-== Quick start (web)
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Built With
+
+* Catalog & core
+** link:https://www.typescriptlang.org/[image:https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white[TypeScript]]
+** link:https://json-schema.org/[image:https://img.shields.io/badge/JSON_Schema-000000?style=for-the-badge&logo=json&logoColor=white[JSON Schema]]
+** link:https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API[image:https://img.shields.io/badge/Web_Audio-E34F26?style=for-the-badge&logo=mdnwebdocs&logoColor=white[Web Audio]]
+* Web adapter
+** link:https://vitejs.dev/[image:https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white[Vite]]
+** link:https://pnpm.io/[image:https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white[pnpm]]
+* Native adapters
+** link:https://dlang.org/[image:https://img.shields.io/badge/D-B03931?style=for-the-badge&logo=d&logoColor=white[D]] / GtkD
+** link:https://www.qt.io/[image:https://img.shields.io/badge/Qt-41CD52?style=for-the-badge&logo=qt&logoColor=white[Qt]]
+** link:https://www.dearimgui.com/[image:https://img.shields.io/badge/Dear_ImGui-5C5C5C?style=for-the-badge[Dear ImGui]]
+** link:https://iced.rs/[image:https://img.shields.io/badge/iced-000000?style=for-the-badge&logo=rust&logoColor=white[iced]]
+** link:https://www.egui.rs/[image:https://img.shields.io/badge/egui-1f1f1f?style=for-the-badge&logo=rust&logoColor=white[egui]]
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Getting Started
+
+=== Prerequisites
+
+* link:https://nodejs.org/[Node.js] and link:https://pnpm.io/[pnpm]
+* Optional: toolkit SDKs for native adapters (see each adapter README)
+
+=== Web demo (local)
 
 [source,shell]
 ----
@@ -53,16 +120,99 @@ pnpm validate:catalog
 pnpm dev
 ----
 
-Demo `base` is `/audio-lexicon/` for project Pages under `hci-nerdz.github.io`.
+The Pages demo uses Vite `base` `/audio-lexicon/` under `hci-nerdz.github.io`.
 
-== Native adapters
+=== Native adapters
 
 See each adapter `README.adoc` for toolkit-specific build steps (GtkD, Qt 6, ImGui, iced, egui, OBS plugin template).
 
-== Version
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
 
-See link:version.json[version.json] and link:CHANGELOG.adoc[CHANGELOG.adoc].
+== Usage
+
+Open the web demo, pick a term from the tree (or use `?term=` in the URL), read meaning and history, adjust controls, Play a curated sample, and copy EqualizerAPO / OBS export snippets when shown.
+
+In-repo Diátaxis stubs live under `docs/` (explanation, how-to, reference). Org docs hub: link:https://hci-nerdz.github.io/docs/[hci-nerdz.github.io/docs].
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Changelog
+
+See link:CHANGELOG.adoc[CHANGELOG.adoc] and link:version.json[version.json].
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Contributing
+
+Contributions are welcome. Open an issue before large changes.
+
+. Fork the Project
+. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+. Push to the Branch (`git push origin feature/AmazingFeature`)
+. Open a Pull Request
+
+=== Top contributors
+
+ifdef::env-github[]
+++++
+<a href="https://github.com/HCI-Nerdz/audio-lexicon/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=HCI-Nerdz/audio-lexicon" alt="contributors" />
+</a>
+++++
+endif::[]
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
 
 == License
 
-MIT — link:LICENSE[LICENSE]. Sample tracks carry their own CC0 / CC licenses listed in `catalog/lexicon.json`.
+Distributed under the MIT License. See link:LICENSE[LICENSE] for more information.
+Sample tracks carry their own CC0 / CC licenses listed in `catalog/lexicon.json`.
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Contact
+
+HCI Nerdz
+
+* Project: https://github.com/HCI-Nerdz/audio-lexicon
+* Demo: https://hci-nerdz.github.io/audio-lexicon/
+* Org: https://github.com/HCI-Nerdz
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]
+
+== Acknowledgments
+
+* link:https://sourceforge.net/projects/equalizerapo/[Equalizer APO] — primary Windows system-EQ export target
+* link:https://github.com/othneildrew/Best-README-Template[Best-README-Template]
+* link:https://shields.io[Shields.io]
+
+ifdef::env-github[]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+endif::[]

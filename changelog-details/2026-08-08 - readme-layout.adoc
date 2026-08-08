@@ -1,0 +1,3 @@
+= README Best-README layout
+
+Rewrote the GitHub-facing README to follow `general/readme-layout.md`: centered badge header (HTML on GitHub), Explore the docs → org hub, View Demo / issues CTAs, role-grouped Built With, section back-to-top, Contact, contrib.rocks, Acknowledgments.
