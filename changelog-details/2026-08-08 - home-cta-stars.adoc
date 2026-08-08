@@ -1,0 +1,3 @@
+= Home CTA: Peaking EQ primary, stars badge
+
+Home primary action is now “Start with Peaking EQ”. The former GitHub button is a shields.io GitHub stars badge linking to the repository.

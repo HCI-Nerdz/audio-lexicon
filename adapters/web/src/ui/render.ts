@@ -222,8 +222,22 @@ function renderHomePage(term: Term): string {
     <p class="summary">${escapeHtml(term.summary)}</p>
 
     <div class="section home-cta">
-      <a class="land-btn primary" href="https://github.com/HCI-Nerdz/audio-lexicon" target="_blank" rel="noreferrer">GitHub project</a>
-      <button type="button" class="land-btn" data-term="peaking-eq">Start with Peaking EQ</button>
+      <button type="button" class="land-btn primary" data-term="peaking-eq">Start with Peaking EQ</button>
+      <a
+        class="github-stars"
+        href="https://github.com/HCI-Nerdz/audio-lexicon"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="HCI-Nerdz/audio-lexicon on GitHub"
+      >
+        <img
+          src="https://img.shields.io/github/stars/HCI-Nerdz/audio-lexicon?style=social"
+          alt="GitHub stars"
+          width="100"
+          height="20"
+          loading="lazy"
+        />
+      </a>
     </div>
 
     <div class="section"><h2>Why it exists</h2><p>${escapeHtml(term.plainMeaning)}</p></div>
