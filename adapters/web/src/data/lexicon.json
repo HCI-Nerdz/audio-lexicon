@@ -437,7 +437,7 @@
       "category": "home",
       "summary": "Pro apps bury filters behind jargon. This UI teaches what each setting means — history, sound, and controls — before you trust a knob.",
       "plainMeaning": "Equalizers, ducking, sidechain, Q, shelves — the words arrived from radio, consoles, and speakers. Most UIs assume you already speak that dialect. audio-lexicon puts a searchable term tree beside plain-language meaning, original usage, a live curve or envelope, and A/B audition on royalty-free audio.",
-      "history": "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; honesty when it does not.",
+      "history": "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; clarity when it does not.",
       "relatedLinks": [
         {
           "label": "Equalizer APO",

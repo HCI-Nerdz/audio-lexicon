@@ -66,7 +66,7 @@ add(term({
   plainMeaning:
     "Equalizers, ducking, sidechain, Q, shelves — the words arrived from radio, consoles, and speakers. Most UIs assume you already speak that dialect. audio-lexicon puts a searchable term tree beside plain-language meaning, original usage, a live curve or envelope, and A/B audition on royalty-free audio.",
   history:
-    "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; honesty when it does not.",
+    "Built as an HCI Nerdz literacy surface: one shared catalog, many toolkit adapters (web, GtkD, Qt, ImGui, iced, egui, OBS dock). EqualizerAPO-aligned and OBS-flavored exports when a term maps; clarity when it does not.",
   whenToUse:
     "Pick any term in the tree. Read meaning and history, twist controls, Play a curated sample, toggle Effect engaged/bypassed, and copy export snippets when shown. Start from Home anytime to reorient.",
   commonConfusion:
