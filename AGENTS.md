@@ -4,10 +4,6 @@
 
 Pro-audio filter and processing literacy UI. Shared `catalog/` is the source of truth; GUI adapters are thin shells over the same information architecture.
 
-## Machine facts
-
-Workstation / path facts live only in `$CODE_ROOT/MEMORIES.md` (never commit a per-repo `MEMORIES.md`).
-
 ## Layout
 
 - `catalog/` — terms, taxonomy, curated sample metadata
