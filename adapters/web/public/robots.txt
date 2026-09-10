@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hci-nerdz.github.io/audio-lexicon/sitemap.xml

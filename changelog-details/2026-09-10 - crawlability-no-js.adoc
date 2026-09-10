@@ -1,0 +1,3 @@
+= 2026-09-10 — Crawlability + no-JS fallback
+
+Web adapter (`adapters/web`) publishes `public/robots.txt` and `public/sitemap.xml` for https://hci-nerdz.github.io/audio-lexicon/. The sitemap lists only the real home entrypoint (not the `app.html` redirect stub). `index.html` keeps the `#app` mount and adds an h1 plus short purpose paragraph visible without JavaScript.
