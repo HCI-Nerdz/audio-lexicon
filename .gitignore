@@ -44,3 +44,5 @@ samples/curated/*.mp3
 adapters/web/public/samples/*.mp3
 !adapters/web/public/samples/tone-bed.wav
 scripts/_probe-samples.mjs
+!/.editorconfig
+!/.gitattributes
